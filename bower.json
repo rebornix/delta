@@ -1,0 +1,15 @@
+{
+  "name": "delta",
+  "version": "0.2.0",
+  "description": "",
+  "homepage": "http://www.deltastartup.com",
+  "author": {
+    "name": "Gurudigger"
+  },
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-bootstrap": "~0.10.0",
+    "angular-ui-router": "~0.2.8",
+    "bootstrap": "~3.1.1"
+  }
+}

@@ -1,0 +1,23 @@
+{
+	"folders":
+	[
+		{
+			"path": "src",
+			"name": "Source"
+		},
+		{
+			"path": "./",
+			"name": "Configuration",
+			"folder_exclude_patterns": ["*"]
+		},
+		{
+			"path": "tasks",
+			"name": "Task"
+		}
+	],
+	"settings":
+	{
+		"tab_size": 4,
+		"translate_tabs_to_spaces": true
+	}
+}
