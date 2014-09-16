@@ -19,12 +19,13 @@ module.exports = function (grunt) {
         },
 
         less: {
-            '<%= delta.app %>/css/delta.css': ['<%= delta.app %>/app/styles/less/master.less']
+            '<%= delta.app %>/css/delta.css': ['<%= delta.app %>/app/styles/less/master.less'],
+            '<%= delta.app %>/css/vendor.css': ['<%= delta.app %>/bower_components/bootstrap/less/bootstrap.less']
         },
-		
+
 		copy: {
             dist: {
-                files: [			
+                files: [
 					{
                         expand: true,
                         cwd: '<%= delta.app %>/fonts/',
@@ -41,7 +42,7 @@ module.exports = function (grunt) {
                 ]
             }
         },
-		
+
 		ngmin: {
             dist: {
                 files: {
@@ -60,7 +61,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-		
+
 		useminPrepare: {
             html: '<%= delta.app %>/index.html',
             options: {
@@ -77,7 +78,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-		
+
 		rev: {
             dist: {
                 files: {
@@ -88,14 +89,14 @@ module.exports = function (grunt) {
                 }
             }
         },
-		
+
 		usemin: {
             html: ['<%= delta.dist %>/index.html'],
             options: {
                 assetsDirs: ['<%= delta.dist %>']
             }
         },
-		
+
         express:{
             options: {
                 port: 9000
@@ -111,11 +112,11 @@ module.exports = function (grunt) {
                 }
             }
         },
-		
+
 		deploy: {
             configFile: '<%= delta.root %>/DeployConfig.json'
         },
-		
+
 		watch: {
 			express: {
                 files: ['<%= delta.app %>/*.js'],
@@ -141,7 +142,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-rev');
     grunt.loadNpmTasks('grunt-usemin');
-	
+
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
