@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         },
 
         less: {
-            '<%= delta.app %>/css/delta.css %>': '<%= delta.app %>/app/styles/less/delta.less'
+            '<%= delta.app %>/css/delta.css': ['<%= delta.app %>/app/styles/less/delta.less']
         },
 		
 		copy: {
