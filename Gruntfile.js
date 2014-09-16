@@ -43,6 +43,15 @@ module.exports = function (grunt) {
             }
         },
 
+        sprite: {
+            all: {
+                src: '<%= delta.app %>/images/*.png',
+                destImg: '<%= delta.app %>/css/spritesheet.png',
+                destCSS: '<%= delta.app %>/css/sprites.css',
+                algorithm: 'left-right'
+            }
+        },
+
 		ngmin: {
             dist: {
                 files: {
@@ -118,6 +127,10 @@ module.exports = function (grunt) {
         },
 
 		watch: {
+            sprite: {
+                files: ['<%= delta.app %>/images'],
+                tasks: ['sprite']
+            },
 			express: {
                 files: ['<%= delta.app %>/*.js'],
                 tasks: ['express:dev']
@@ -146,12 +159,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-spritesmith');
 
     // Custom tasks.
     grunt.task.loadTasks('tasks');
 
     // Alias tasks
-    grunt.registerTask('dev', ['clean', 'bowerInstall', 'less', 'express:dev','watch']);
-	grunt.registerTask('prod', ['clean', 'bowerInstall', 'useminPrepare', 'copy', 'concat', 'ngmin', 'uglify', 'cssmin', 'rev', 'usemin']);
+    grunt.registerTask('dev', ['clean', 'bowerInstall', 'less', 'sprite', 'express:dev','watch']);
+    grunt.registerTask('prod', ['clean', 'bowerInstall', 'useminPrepare', 'copy', 'less', 'sprite', 'concat', 'ngmin', 'uglify', 'cssmin', 'rev', 'usemin']);
 	grunt.registerTask('serve', ['prod', 'express:dist', 'watch']);
 };
