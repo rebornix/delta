@@ -7,55 +7,67 @@
     <!-- endbuild -->
 </head>
 <body>
-  <div class="container" ng-controller="homeController">
-    <div class="jumbotron">
-      <div class="container">
-        <div class="nav" style="padding: 0">
-          <a class="nav_title" href="/">关于我们</a>
-          <a class="nav_title" href="#/course">课程公告</a>
-          <a class="nav_title" href="#/signup">课程报名</a>
-          <a class="nav_title" href="#/contact">联系我们</a>
-        </div>
-        <div class="text-center">
-          <img alt="Logo" src="http://www.deltastartup.com/images/logo.png">
-          <div class="title">Delta Startup Training Camp</div>
-          <div class="desc">
-            2014年7月25日 - 2014年7月27日 上海, 创智天地
+  <div ng-controller="homeController">
+
+    <div class="header header-home">
+
+      <ul class="navigator pull-left">
+        <li>
+          <a class="delta-active" href="/">关于我们</a>
+        </li>
+        <li>
+          <a href="#/course/">课程公告</a>
+        </li>
+        <li>
+          <a href="#/signup/">课程报名</a>
+        </li>
+        <li>
+          <a href="#/contact/">联系我们</a>
+        </li>
+      </ul>
+
+      <button class="btn-lg btn-primary pull-right">登录</button>
+
+      <div class="jumbotron">
+        <div class="container intro">
+          <p>
+            <img alt="Logo" src="image/logo.png" style="width: 56px;">
+            <span>Delta Startup Tranning Camp</span>
+          </p>
+          <p class="slogan" style="font-size: 3.6em">我觉得我们必须养只猫</p>
+          <p class="text-right" style="font-size: 1em">2014年7月25日 - 2014年7月27日 上海, 创智天地</p>
+          <div class="camp-intro text-center">
+            <button class="btn-lg btn-primary btn-delta">本期训练营介绍</button>
           </div>
-          <br>
-            <br>
-              <button class="btn-lg btn-primary delta_btn" onclick="javascript:window.location.href=&#39;/course/&#39;;" type="button">
-                本期训练营介绍
-              </button>
-            <br>
-          <br>
         </div>
       </div>
-      <div class="tex">
-        <br>
-      </div>
+
     </div>
+
     <div ui-view></div>
 
     <footer class="text-center">
       Copyright © 2014 Delta Startup Training Camp All Rights Reserved. Powered by
       <a href="http://gurudigger.com/" target="_blank">GuruDigger</a>.
     </footer>
-    </div>
-    <!-- build:js js/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    
-    <!-- build:js js/delta.js -->
-    <script src="app/app.js"></script>
-    <script src="app/home/home-controller.js"></script>
-    <script src="app/home/home-service.js"></script>
-    <!-- endbuild -->
+
+  </div>
+
+  <!-- build:js js/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js js/delta.js -->
+  <script src="app/app.js"></script>
+  <script src="app/home/home-controller.js"></script>
+  <script src="app/home/home-service.js"></script>
+  <!-- endbuild -->
+
 </body>
 </html>
