@@ -17,6 +17,10 @@ module.exports = function (grunt) {
                 ignorePath: '<%= delta.app %>/'
             }
         },
+
+        less: {
+            '<%= delta.app %>/css/delta.css %>': '<%= delta.app %>/app/styles/less/delta.less'
+        },
 		
 		copy: {
             dist: {
@@ -116,6 +120,10 @@ module.exports = function (grunt) {
 			express: {
                 files: ['<%= delta.app %>/*.js'],
                 tasks: ['express:dev']
+            },
+            less: {
+                files: ['<%= delta.app %>/app/styles/less/*.less'],
+                tasks: ['less']
             }
 		}
     });
@@ -136,12 +144,13 @@ module.exports = function (grunt) {
 	
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     // Custom tasks.
     grunt.task.loadTasks('tasks');
 
     // Alias tasks
-    grunt.registerTask('dev', ['clean', 'bowerInstall','express:dev','watch']);
+    grunt.registerTask('dev', ['clean', 'bowerInstall', 'less', 'express:dev','watch']);
 	grunt.registerTask('prod', ['clean', 'bowerInstall', 'useminPrepare', 'copy', 'concat', 'ngmin', 'uglify', 'cssmin', 'rev', 'usemin']);
 	grunt.registerTask('serve', ['prod', 'express:dist', 'watch']);
 };

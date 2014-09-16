@@ -1,2 +1,6 @@
-app.controller('homeController', function($scope, $q, homeService) {
-});
+(function () {
+    var app = angular.module('deltastartup');
+
+    app.controller('homeController', function($scope, $q, homeService) {
+    });
+}());

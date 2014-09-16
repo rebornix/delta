@@ -1,0 +1,24 @@
+<div class="contact">
+  <div class="sub_title text-center">联系方式</div>
+  <form accept-charset="UTF-8" action="/contact/deliver" autocomplete="off" enctype="multipart/form-data" method="post" name="contact_form" novalidate="" role="form" style="margin-left: 20%;margin-right: 20%;">
+    <header class="info" id="header">
+      <h2>情况描述</h2>
+      <div>请在这里描述你的问题，我们的工作人员将会尽快联系你。</div>
+    </header>
+    <div class="form-group">
+      <label for="email" id="title_email">
+        您的邮箱：
+        <span class="req" id="req_1">*</span>
+      </label>
+      <input class="form-control" id="email" maxlength="255" name="email" placeholder="Enter email" required="" tabindex="1" type="text" value="">
+    </div>
+    <div class="form-group">
+      <label for="description" id="description">
+        问题描述：
+        <span class="req" id="req_2">*</span>
+      </label>
+      <textarea class="form-group" cols="50" id="description" name="description" required="" rows="10" spellcheck="true" style="width: 100%" tabindex="2"></textarea>
+    </div>
+    <input class="btn btn-default" id="saveForm" name="saveForm" type="submit" value="提交">
+  </form>
+</div>
