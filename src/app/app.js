@@ -16,4 +16,12 @@
                 templateUrl: "app/contact/contact.html"
             })
     });
+
+    app.controller('appController', function($scope, appService) {
+
+    });
+
+    app.service('appService', function() {
+
+    });
 }());
