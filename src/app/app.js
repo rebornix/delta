@@ -5,15 +5,24 @@
         $stateProvider
             .state('index', {
                 url: "",
-                templateUrl: "app/home/home.html"
+                views: {
+                    '': { templateUrl: "app/home/home.html" },
+                    'jumbotron@index': { templateUrl: "app/shared/jumbotron-home.html" }
+                }
             })
             .state('course', {
                 url: "/course",
-                templateUrl: "app/course/course.html"
+                views: {
+                    '': { templateUrl: "app/course/course.html" },
+                    'jumbotron@course': { templateUrl: "app/shared/jumbotron-other.html" }
+                }
             })
             .state('contact', {
                 url: "/contact",
-                templateUrl: "app/contact/contact.html"
+                views: {
+                    '': { templateUrl: "app/contact/contact.html" },
+                    'jumbotron@contact': { templateUrl: "app/shared/jumbotron-other.html" }
+                }
             })
     });
 
