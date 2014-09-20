@@ -1,4 +1,4 @@
-(function() {
+(function () {
     var app = angular.module('deltastartup', ['ui.router', 'deltastartup.services']);
 
     app.config(function ($stateProvider, $urlRouterProvider) {
@@ -22,6 +22,13 @@
                 views: {
                     '': { templateUrl: "app/contact/contact.html" },
                     'jumbotron@contact': { templateUrl: "app/shared/jumbotron-other.html" }
+                }
+            })
+            .state('signup', {
+                url: "/signup",
+                views: {
+                    '': { templateUrl: "app/signup/signup.html" },
+                    'jumbotron@signup': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
     });

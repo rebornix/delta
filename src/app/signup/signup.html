@@ -1,0 +1,75 @@
+<div ui-view="jumbotron"></div>
+
+<div class="container-fluid profile" ng-controller="signupCtrl">
+  <div class="row-fluid" id="profession">
+    <div class="container-fluid profile-header">
+      <h5 class="pull-left"><strong>职业经历</strong></h5>
+      <div class="action pull-right">
+        <button class="btn-sm btn-profile btn-linkedin">导入Linkedin</button>
+        <button class="btn-sm btn-profile btn-delta-style">添加</button>
+      </div>
+    </div>
+    <div class="experience">
+      <div class="exp-entry container-fluid" ng-repeat="experience in professionExperiences" editable>
+        <div class="col-md-9" ng-show="!isEditable">
+          <p class="where-and-when">
+            <span class="where">{{ experience.company }}</span>
+            <span class="duration">{{ experience.duration }}</span>
+          </p>
+          <p class="title"><strong>{{ experience.title }}</strong></p>
+          <p class="muted description">{{ experience.description }}</p>
+        </div>
+        <div class="edit-region col-md-9" ng-show="isEditable">
+          <input class="form-control" type="text" ng-model="experience.company" required>
+          <input class="form-control" type="text" ng-model="experience.duration" required>
+          <input class="form-control" type="text" ng-model="experience.title" required>
+          <textarea class="form-control" rows="3" ng-model="experience.description" required></textarea>
+        </div>
+        <div class="col-md-3 text-right">
+          <button class="btn-sm btn-primary btn-profile" ng-show="!isEditable" ng-click="modify(experience)">M</button>
+          <button class="btn-sm btn-primary btn-profile" ng-show="isEditable" ng-click="update(experience)">S</button>
+          <button class="btn-sm btn-primary btn-profile" ng-click="delete(experience.company)">D</button>
+        </div>
+      </div>
+    </div>
+    <div class="editable">
+      <form>
+        <input class="form-control inactive" placeholder="Company">
+        <input class="form-control" placeholder="2012.03 - 2012.09">
+        <input class="form-control" placeholder="Title">
+        <textarea class="form-control" rows="3"></textarea>
+      </form>
+    </div>
+  </div>
+
+  <div class="row-fluid" id="education">
+    <div class="container-fluid profile-header">
+      <h5 class="pull-left"><strong>教育</strong></h5>
+      <div class="action pull-right">
+        <button class="btn-sm btn-profile btn-delta-style">添加</button>
+      </div>
+    </div>
+    <div class="experience">
+      <div class="exp-entry container-fluid" ng-repeat="experience in educationExperiences" editable>
+        <div class="col-md-9" ng-show="!isEditable">
+          <p class="where-and-when">
+            <span class="where">{{ experience.where }}</span>
+            <span class="duration">{{ experience.duration }}</span>
+          </p>
+          <p class="title"><strong>{{ experience.degree }}</strong></p>
+          <p class="muted description">{{ experience.description }}</p>
+        </div>
+        <div class="edit-region col-md-9" ng-show="isEditable">
+          <input class="form-control" type="text" ng-model="experience.where" required>
+          <input class="form-control" type="text" ng-model="experience.duration" required>
+          <input class="form-control" type="text" ng-model="experience.degree" required>
+          <textarea class="form-control" rows="3" ng-model="experience.description" required></textarea>
+        </div>
+        <div class="col-md-3 text-right">
+          <button class="btn-sm btn-primary btn-profile" ng-show="!isEditable" ng-click="modify(experience)">M</button>
+          <button class="btn-sm btn-primary btn-profile" ng-show="isEditable" ng-click="update(experience)">S</button>
+          <button class="btn-sm btn-primary btn-profile" ng-click="delete(experience.company)">D</button>
+        </div>
+      </div>
+    </div>
+</div>
