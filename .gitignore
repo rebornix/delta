@@ -186,3 +186,6 @@ DeployConfig.json
 
 # sublime workspace file
 sublime.sublime-workspace
+
+# vim swap file
+*.swp
