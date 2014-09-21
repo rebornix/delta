@@ -1,0 +1,21 @@
+<div>
+  <div class="col-md-9" ng-show="!experience.isInEditingState">
+    <p class="where-and-when">
+      <span class="where">{{ experience.entry.where }}</span>
+      <span class="duration">{{ experience.entry.duration }}</span>
+    </p>
+    <p class="title"><strong>{{ experience.entry.title }}</strong></p>
+    <p class="muted description">{{ experience.entry.description }}</p>
+  </div>
+  <div class="edit-region col-md-9" ng-show="experience.isInEditingState">
+    <input class="form-control" type="text" ng-model="experience.company" required>
+    <input class="form-control" type="text" ng-model="experience.duration" required>
+    <input class="form-control" type="text" ng-model="experience.title" required>
+    <textarea class="form-control" rows="3" ng-model="experience.description" required></textarea>
+  </div>
+  <div class="col-md-3 text-right">
+    <button class="btn-sm btn-primary btn-profile" ng-show="!experience.isInEditingState" ng-click="setAsEditing(experience)">M</button>
+    <button class="btn-sm btn-primary btn-profile" ng-show="experience.isInEditingState" ng-click="updatePExperience(experience)">S</button>
+    <button class="btn-sm btn-primary btn-profile" ng-click="deletePExperience(experience)">D</button>
+  </div>
+</div>

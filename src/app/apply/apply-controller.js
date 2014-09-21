@@ -3,34 +3,63 @@
   var app = angular.module("deltastartup");
 
   app.controller('applyController', function ($scope) {
-    $scope.professionExperiences = [{
-      company: 'Xero',
-      duration: '2012.03 - 2014.03',
-      title: 'Full Stack Engineer',
-      description: 'Requirement, Designing, Programming, Testing, Integration, Sales, etc...'
-    }, {
-      company: 'Google',
-      duration: '2012.03 - 2014.03',
-      title: 'Dev',
-      description: 'None'
-    }];
-
     $scope.educationExperiences = [{
-      where: 'EPFL',
-      duration: '2009.08 - 2013.07',
-      degree: 'Bachelor of Engineering',
-      description: 'Computer science.'
+      isInEditingState: false,
+      entry: {
+        where: 'EPFL',
+        duration: '2009.08 - 2013.07',
+        degree: 'Bachelor of Engineering',
+        description: 'Computer Science'
+      }
     }, {
-      company: 'Google',
-      duration: '2012.03 - 2014.03',
-      title: 'Dev',
-      description: 'None'
+      isInEditingState: false,
+      entry: {
+        where: 'HUST',
+        duration: '2012.03 - 2014.03',
+        degree: 'Master of Compute Science',
+        description: 'Computer Science'
+      }
     }];
 
-    this.delete = function () {
-      $scope.professionExperiences.splice(1);
+  });
+
+  app.controller('professionController', function ($scope) {
+    var isInEditingState = false;
+
+    $scope.professionExperiences = [];
+
+    $scope.importFromLinkedIn = function () {
+      angular.forEach([{
+        isInEditingState: false,
+        entry: {
+          where: 'Xero',
+          duration: '2012.03 - 2014.03',
+          title: 'Full Stack Engineer',
+          description: 'Requirement, Designing, Programming, Testing, Integration, Sales, etc...'
+        }
+      }, {
+        isInEditingState: false,
+        entry: {
+          where: 'Google',
+          duration: '2012.03 - 2014.03',
+          title: 'Dev',
+          description: 'None'
+        }
+      }], function (experience) {
+        $scope.professionExperiences.push(experience);
+      });
     };
 
+    $scope.addExperience = function () {
+      if (isInEditingState) {
+      
+      }
+    };
+    
+  });
+
+  app.controller('educationController', function ($scope) {
+  
   });
 
 
