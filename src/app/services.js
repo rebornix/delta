@@ -4,7 +4,7 @@
    services.factory('appService', ['$http',
         function() {
             var appService = {
-                currentUser = null;
+                currentUser: null
             };
 
             return appService;
