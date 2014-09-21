@@ -1,0 +1,203 @@
+.illustration {
+  margin: 12px auto 60px;
+}
+
+.application-form {
+  width: 700px;
+  margin: 0 auto; 
+  position: relative;
+  left: 3%;
+
+  .wizard {
+    margin-left: 40px;
+    width: 180px;
+
+    p {
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    ol {
+      padding-left: 24px;
+      font-size: 16px;
+
+      li {
+        padding-bottom: 20px; 
+      }
+
+      a {
+        text-decoration: none;
+        cursor: pointer;
+      }
+      a:hover, a:visited, a:active {
+        color: #f3643c;  
+      }
+    }
+  }
+
+  .personal-info {
+    margin: 40px 16px;
+    
+    input {
+      height: 42px;
+      width: 400px;
+      margin-bottom: 20px; 
+    }
+  }
+
+  .current-status {
+    margin: 40px 16px;
+
+    p {
+      line-height: 24px; 
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    span {
+      cursor: pointer;
+      position: relative;
+      padding-left: 32px;
+    }
+
+    span:before {
+      border: 1px solid #999999;
+      border-radius: 50px;
+
+      content: '';  
+      display: inline-block;  
+    
+      width: 12px;  
+      height: 12px;  
+    
+      position: absolute;  
+      left: 0;  
+      background-color: white;  
+      margin-top: 5px;
+    }
+
+    input[type="radio"]:checked + span:before {
+      background: #f3643c;
+      display: block;
+    }
+
+    textarea.status-comment {
+      max-width: 366px;
+      position: relative;
+      left: 32px;
+    }
+  }
+}
+
+.entry {
+  border-radius: 4px;
+  width: 460px;  
+  background-color: #EEEEEE;
+}
+
+.editable {
+  padding: 12px;
+}
+
+.experience>div>div:first-child {
+  margin-left: 0;    
+}
+
+.profile {
+  border-radius: 6px;
+  width: 460px;  
+  background-color: #EEEEEE;
+}
+
+.profile-header {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.btn-profile {
+  border-radius: 4px;
+  border: 0;
+  color: white;
+  padding: auto 24px;
+  font-size: 14px;
+}
+
+.profile .btn-delta-style {
+  background: #f07240;
+}
+
+.profile .btn-delta-style:hover {
+  background: #f07540;
+}
+
+.profile .btn-linkedin {
+  background: #2672AE;
+}
+
+.profile .btn-linkedin:hover {
+  background: #2673AE;
+}
+
+.exp-entry, .edit-region {
+  margin-bottom: 24px;  
+}
+
+.exp-entry .where-and-when {
+  margin-bottom: 2px; 
+}
+
+.exp-entry .title {
+  margin-bottom: 16px;  
+}
+
+.exp-entry .where {
+  color: #f07240;
+  padding-right: 16px;
+}
+
+.experience .col-md-9, .experience .col-md-3 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.edit-region input, .editable input {
+  margin-bottom: 2px;
+}
+
+.pre-next {
+  margin-top: 40px;  
+}
+
+.pre-next .btn-unavailable {
+  margin-left: 10px;  
+  background: #808080;
+  height: 42px;
+  width: 140px;
+  font-size: 18px;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+}
+
+.pre-next .btn-unavailable:hover {
+  background: #4d4d4d;  
+}
+
+.pre-next .btn-available {
+  margin-left: 10px;  
+  background: #f3643c;
+  height: 42px;
+  width: 140px;
+  font-size: 18px;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+}
+
+.pre-next .btn-available:hover {
+  background: #d65234;  
+}

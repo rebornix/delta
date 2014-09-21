@@ -1,0 +1,28 @@
+<div class="container-fluid current-status" ng-controller="currentStatusController">
+  <div class="row-fluid">
+    <form name="currentStatus">
+      <div>
+        <p><input class="" type="radio" name="status"><span class="muted">已经离职，正在创业</span></p>
+      </div>
+      <div>
+        <p><input class="" type="radio" name="status"><span class="muted">还没有离职，正在兼职创业</span></p>
+      </div>
+      <div>
+        <p><input class="" type="radio" name="status"><span class="muted">还没有离职，有创业想法</span></p>
+      </div>
+      <div style="margin-bottom: 60px;">
+        <p><input class="" type="radio" name="status"><span class="muted">其他情况请在此说明</span></p>
+        <textarea class="form-control status-comment"></textarea>
+      </div>
+
+      <div>
+        <p>如果你正在全职或者兼职创业，请简单介绍下你的产品情况，以帮助我们更好地了解你。</p>
+        <textarea class="form-control" rows="6"></textarea>
+      </div>
+    </form>
+    <div class="text-right pre-next">
+      <button class="btn-md btn-available">上一步</button>
+      <button class="btn-md btn-available">下一步</button>
+    </div>
+  </div>
+</div>

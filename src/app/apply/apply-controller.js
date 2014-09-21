@@ -2,6 +2,14 @@
 
   var app = angular.module("deltastartup");
 
+  app.controller('stageController', function ($scope) {
+    $scope.currentStage = 1;
+
+    $scope.setCurrentStage = function (stage) {
+      $scope.currentStage = stage;
+    };
+  });
+
   app.controller('applyController', function ($scope) {
     $scope.educationExperiences = [{
       isInEditingState: false,
@@ -58,7 +66,15 @@
     
   });
 
+  app.controller('currentStatusController', function ($scope) {
+  
+  });
+
   app.controller('educationController', function ($scope) {
+  
+  });
+
+  app.controller('personalInfoController', function ($scope) {
   
   });
 
