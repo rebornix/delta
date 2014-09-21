@@ -10,26 +10,29 @@
     };
   });
 
-  app.controller('applyController', function ($scope) {
-    $scope.educationExperiences = [{
-      isInEditingState: false,
-      entry: {
-        where: 'EPFL',
-        duration: '2009.08 - 2013.07',
-        degree: 'Bachelor of Engineering',
-        description: 'Computer Science'
-      }
+  app.controller('applyController', function ($scope, Auth, $state) {
+      Auth.currentUser().then(function(user) {
+          // User was logged in, or Devise returned
+          // previously authenticated session.
+          
+      }, function(error) {
+          $state.go('sign_in');
+      });
+
+    $scope.professionExperiences = [{
+      company: 'Xero',
+      duration: '2012.03 - 2014.03',
+      title: 'Full Stack Engineer',
+      description: 'Requirement, Designing, Programming, Testing, Integration, Sales, etc...'
     }, {
-      isInEditingState: false,
-      entry: {
-        where: 'HUST',
-        duration: '2012.03 - 2014.03',
-        degree: 'Master of Compute Science',
-        description: 'Computer Science'
-      }
+      company: 'Google',
+      duration: '2012.03 - 2014.03',
+      title: 'Dev',
+      description: 'None'
     }];
 
   });
+
 
   app.controller('professionController', function ($scope) {
     var isInEditingState = false;

@@ -1,4 +1,31 @@
 <div ui-view="jumbotron"></div>
-<div>
-  
+<div class="contact">
+  <div class="devise">
+    <form accept-charset="UTF-8" name="sign_up_form" ng-submit="register()">
+      <div>
+        <input autofocus="autofocus" name="user_email" placeholder="邮箱地址" type="email" ng-model="credentials.email" required>
+        <div ng-show="sign_up_form.user_email.$dirty && sign_up_form.user_email.$invalid" class="inline-errors">
+          <span ng-show="sign_up_form.user_email.$error.required">无效输入</span>
+          <span ng-show="sign_up_form.user_email.$error.email">请输入邮箱</span>
+        </div>
+      </div>
+      <div>
+        <input autocomplete="off" name="user_password" placeholder="密码" type="password" ng-minlength=8 ng-model="credentials.password" required>
+        <div ng-show="sign_up_form.user_password.$error.minlength" class="inline-errors">
+          <span ng-show="sign_up_form.user_password.$error.minlength">至少输入八位密码</span>
+        </div>
+      </div>
+      <div>
+        <input autocomplete="off" name="user_password_confirmation" placeholder="密码" type="password" ng-minlength=8 ng-model="password_confirmation" required>
+      </div>
+      <div class="text">
+        点击“注册”按钮, 代表您已经阅读并且接受 GuruDigger
+        <a href="http://gurudigger.com/home/terms" target="_blank">服务条款</a>以及
+        <a href="http://gurudigger.com/home/privacy" target="_blank">隐私条例</a>。
+      </div>
+      <div>
+        <input type="submit" ng-disabled="sign_up_form.$invalid" value="注册"/>
+      </div>
+    </form>
+  </div>
 </div>

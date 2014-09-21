@@ -128,7 +128,7 @@ module.exports = function (grunt) {
 
 		watch: {
             sprite: {
-                files: ['<%= delta.app %>/images'],
+                files: ['<%= delta.app %>/images/*'],
                 tasks: ['sprite']
             },
 			express: {

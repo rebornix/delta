@@ -50,24 +50,59 @@
     app.config(function (AuthProvider) {
         AuthProvider.loginPath('/sign_in');
         AuthProvider.loginMethod('POST');
+        AuthProvider.registerPath('sign_up');
+        AuthProvider.registerMethod('POST');
     });
 
     app.controller('appController', function ($scope, appService, Auth, $state) {
-        $scope.login = function() {
-            $state.go('sign_in');
-            var credentials = {
-                email: 'user@domain.com',
-                password: 'password1'
-            };
+        $scope.sessionBtn = Auth.isAuthenticated() ? "app/user/sign_out_btn.html": "app/user/sign_in_btn.html";
 
-            Auth.login(credentials).then(function(user) {
-                console.log(user); // => {id: 1, ect: '...'}
+        $scope.credentials = {
+            email: '',
+            password: '',
+            password_confirmation: ''
+        };
+
+        $scope.login = function () {
+            Auth.login($scope.credentials).then(function(user) {
+                $state.go('apply');
             }, function(error) {
                 console.log(error);
             });
-        }
+        };
+
+        $scope.logout = function () {
+            Auth.logout().then(function(oldUser) {
+               // alert(oldUser.name + "you're signed out now.");
+            }, function(error) {
+                // An error occurred logging out.
+            });
+        };
+
+        $scope.register = function () {
+            Auth.register($scope.credentials).then(function(registeredUser) {
+                $state.go('apply');
+            }, function(error) {
+                // Registration failed...
+            });
+
+            $scope.$on('devise:new-registration', function(event, user) {
+                // ...
+            });
+        };
+
+        $scope.$on('devise:new-session', function(event, currentUser) {
+            // user logged in by Auth.login({...})
+            $scope.sessionBtn = "app/user/sign_out_btn.html";
+        });
+
+        $scope.$on('devise:logout', function(event, oldCurrentUser) {
+            // ...
+            $scope.sessionBtn = "app/user/sign_in_btn.html";
+        });
     });
 
     app.service('appService', function() {
+
     });
 }());
