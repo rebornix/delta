@@ -3,7 +3,11 @@
 
    services.factory('appService', ['$http',
         function() {
-            
+            var appService = {
+                currentUser = null;
+            };
+
+            return appService;
         }
     ]);
 }());

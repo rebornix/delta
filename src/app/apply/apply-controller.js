@@ -2,7 +2,15 @@
 
   var app = angular.module("deltastartup");
 
-  app.controller('applyController', function ($scope) {
+  app.controller('applyController', function ($scope, Auth, $state) {
+      Auth.currentUser().then(function(user) {
+          // User was logged in, or Devise returned
+          // previously authenticated session.
+          
+      }, function(error) {
+          $state.go('sign_in');
+      });
+
     $scope.professionExperiences = [{
       company: 'Xero',
       duration: '2012.03 - 2014.03',
