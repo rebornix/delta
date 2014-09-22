@@ -48,7 +48,13 @@ module.exports = function (grunt) {
                 src: '<%= delta.app %>/images/*.png',
                 destImg: '<%= delta.app %>/css/spritesheet.png',
                 destCSS: '<%= delta.app %>/css/sprites.css',
-                algorithm: 'left-right'
+                algorithm: 'left-right',
+                cssOpts: {
+                    'cssClass': function (item) {
+                        return '.icon-' + item.name.replace('@', '-');
+                    }
+                }
+
             }
         },
 

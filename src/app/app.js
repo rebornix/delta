@@ -34,24 +34,22 @@
                     'jumbotron@apply': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
-                .state('apply.step1', {
-                    url: "/step-one/",
-                    templateUrl: "app/apply/partials/personal-info.html"
-                })
-                .state('apply.step2', {
-                    url: "/step-two/",
-                    templateUrl: "app/apply/partials/current-status.html"
-                })
-                .state('apply.step3', {
-                    url: "/step-three/",
-                    templateUrl: "app/apply/partials/experience.html"
-                })
-                .state('apply.step4', {
-                    url: "/step-four/",
-                    templateUrl: "app/apply/partials/examination.html"
-                })
-
-            //
+            .state('apply.step1', {
+                url: "/step-one/",
+                templateUrl: "app/apply/partials/personal-info.html"
+            })
+            .state('apply.step2', {
+                url: "/step-two/",
+                templateUrl: "app/apply/partials/current-status.html"
+            })
+            .state('apply.step3', {
+                url: "/step-three/",
+                templateUrl: "app/apply/partials/experience.html"
+            })
+            .state('apply.step4', {
+                url: "/step-four/",
+                templateUrl: "app/apply/partials/examination.html"
+            })
             .state('sign_in', {
                 url: "/sign_in",
                 views: {
@@ -66,10 +64,18 @@
                     'jumbotron@sign_up': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
-        ;
+            .state('404', {
+                url: "/404",
+                views: {
+                    '': { templateUrl: "app/misc/404.html" },
+                    'jumbotron@404': { templateUrl: "app/shared/jumbotron-other.html" }
+                }
+            });
 
         $urlRouterProvider
             .when('/apply', '/apply/step-one/');
+
+        $urlRouterProvider.otherwise("/404");
     });
 
     app.config(function (AuthProvider) {
