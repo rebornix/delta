@@ -1,5 +1,5 @@
-<div class="container-fluid profile" ng-controller="applyController">
-  <div class="row-fluid" id="profession" ng-controller="professionController">
+<div class="container-fluid profile">
+  <div class="row-fluid" id="profession">
     <div class="container-fluid profile-header">
       <h5 class="pull-left"><strong>职业经历</strong></h5>
       <div class="action pull-right">
@@ -9,7 +9,25 @@
     </div>
     <div class="experience">
       <div class="exp-entry container-fluid" ng-repeat="experience in professionExperiences">
-        <ng-include src="'/app/apply/partials/profession-experience.html'">
+        <div class="col-md-9" ng-show="!experience.isInEditingState">
+          <p class="where-and-when">
+            <span class="where">{{ experience.entry.where }}</span>
+            <span class="duration">{{ experience.entry.duration }}</span>
+          </p>
+          <p class="title"><strong>{{ experience.entry.title }}</strong></p>
+          <p class="muted description">{{ experience.entry.description }}</p>
+        </div>
+        <div class="edit-region col-md-9" ng-show="experience.isInEditingState">
+          <input class="form-control" type="text" ng-model="experience.company" required>
+          <input class="form-control" type="text" ng-model="experience.duration" required>
+          <input class="form-control" type="text" ng-model="experience.title" required>
+          <textarea class="form-control" rows="3" ng-model="experience.description" required></textarea>
+        </div>
+        <div class="col-md-3 text-right">
+          <button class="btn-sm btn-primary btn-profile" ng-show="!experience.isInEditingState" ng-click="setAsEditing(experience)">M</button>
+          <button class="btn-sm btn-primary btn-profile" ng-show="experience.isInEditingState" ng-click="updatePExperience(experience)">S</button>
+          <button class="btn-sm btn-primary btn-profile" ng-click="deletePExperience(experience)">D</button>
+        </div>
       </div>
     </div>
   </div>
@@ -23,7 +41,26 @@
     </div>
     <div class="experience">
       <div class="exp-entry container-fluid" ng-repeat="experience in educationExperiences">
-        <ng-include src="'/app/apply/partials/education-experience.html'">
+        <div class="col-md-9" ng-show="!experience.isInEditingState">
+          <p class="where-and-when">
+            <span class="where">{{ experience.entry.where }}</span>
+            <span class="duration">{{ experience.entry.duration }}</span>
+          </p>
+          <p class="title"><strong>{{ experience.entry.degree }}</strong></p>
+          <p class="muted description">{{ experience.entry.description }}</p>
+        </div>
+        <div class="edit-region col-md-9" ng-show="experience.isInEditingState">
+          <input class="form-control" type="text" ng-model="experience.where" required>
+          <input class="form-control" type="text" ng-model="experience.duration" required>
+          <input class="form-control" type="text" ng-model="experience.degree" required>
+          <textarea class="form-control" rows="3" ng-model="experience.description" required></textarea>
+        </div>
+        <div class="col-md-3 text-right">
+          <button class="btn-sm btn-primary btn-profile" ng-show="!experience.isInEditingState" ng-click="setAsEditing(experience)">M</button>
+          <button class="btn-sm btn-primary btn-profile" ng-show="experience.isInEditingState" ng-click="updateExperience(experience)">S</button>
+          <button class="btn-sm btn-primary btn-profile" ng-click="deleteExperience(experience)">D</button>
+        </div>
       </div>
     </div>
+  </div>
 </div>

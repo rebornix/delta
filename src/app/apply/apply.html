@@ -1,6 +1,6 @@
 <div ui-view="jumbotron"></div>
 
-<div class="container-fluid application">
+<div class="container-fluid application" ng-controller="applyController">
   <div class="illustration text-center">
     <p class="muted">为了保证训练营的质量，我们只能每次提供有限的名额。所以请仔细填写以下报名表，以帮助我们更好了解您。</p>
     <p class="muted">当您填写好报名表以后，我们的工作人员会在24小时之内联系你。</p>
@@ -10,28 +10,17 @@
     <h3>2014年上海站（2014.07.25 - 2014.07.27）</h3>
   </div>
   
-  <div class="application-form clearfix" ng-controller="stageController">
-    <div ng-switch on="currentStage" class="entry pull-left">
-      <div ng-switch-when="1">
-        <ng-include src="'/app/apply/partials/personal-info.html'">
-      </div>
-      <div ng-switch-when="2">
-        <ng-include src="'/app/apply/partials/current-status.html'">
-      </div>
-      <div ng-switch-when="3">
-        <ng-include src="'/app/apply/partials/experience.html'">
-      </div>
-      <div ng-switch-when="4">
-        <ng-include src="'/app/apply/partials/examination.html'">
-      </div>
+  <div class="application-form clearfix">
+    <div class="entry pull-left">
+      <div ui-view></div>
     </div>
     <div class="wizard pull-left">
       <p>简单四步完成报名</p>
       <ol class="mutest">
-        <li><a class="mutest" ng-click="setCurrentStage(1)">个人信息</a></li>
-        <li><a class="mutest" ng-click="setCurrentStage(2)">项目信息</a></li>
-        <li><a class="mutest" ng-click="setCurrentStage(3)">个人档案</a></li>
-        <li><a class="mutest" ng-click="setCurrentStage(4)">审核</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".step1">个人信息</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".step2">项目信息</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".step3">个人档案</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".step4">审核</a></li>
       </ol>
     </div>
   </div>

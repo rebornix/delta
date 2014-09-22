@@ -24,13 +24,34 @@
                     'jumbotron@contact': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
+            // apply
             .state('apply', {
                 url: "/apply",
+                abstract: true,
+                controller: 'applyController',
                 views: {
                     '': { templateUrl: "app/apply/apply.html" },
                     'jumbotron@apply': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
+                .state('apply.step1', {
+                    url: "/step-one/",
+                    templateUrl: "app/apply/partials/personal-info.html"
+                })
+                .state('apply.step2', {
+                    url: "/step-two/",
+                    templateUrl: "app/apply/partials/current-status.html"
+                })
+                .state('apply.step3', {
+                    url: "/step-three/",
+                    templateUrl: "app/apply/partials/experience.html"
+                })
+                .state('apply.step4', {
+                    url: "/step-four/",
+                    templateUrl: "app/apply/partials/examination.html"
+                })
+
+            //
             .state('sign_in', {
                 url: "/sign_in",
                 views: {
@@ -45,6 +66,10 @@
                     'jumbotron@sign_up': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
+        ;
+
+        $urlRouterProvider
+            .when('/apply', '/apply/step-one/');
     });
 
     app.config(function (AuthProvider) {
