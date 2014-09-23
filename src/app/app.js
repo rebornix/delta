@@ -66,10 +66,18 @@
                     'jumbotron@sign_up': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
-        ;
+            .state('404', {
+                url: "/404",
+                views: {
+                    '': { templateUrl: "app/misc/404.html" },
+                    'jumbotron@404': { templateUrl: "app/shared/jumbotron-other.html" }
+                }
+            });
 
         $urlRouterProvider
             .when('/apply', '/apply/personal-info/');
+
+        $urlRouterProvider.otherwise("/404");
     });
 
     app.config(function (AuthProvider) {

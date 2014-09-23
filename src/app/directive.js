@@ -38,7 +38,7 @@
       restrict: 'A',
       link: function (scope, element, attrs) {
         if (isRetina) {
-          element.attr('class', attrs.class + "2x");        
+          element.attr('class', attrs.class + "-2x");        
         }
       }
     };
