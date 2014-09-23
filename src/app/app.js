@@ -34,20 +34,20 @@
                     'jumbotron@apply': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
-                .state('apply.step1', {
-                    url: "/step-one/",
+                .state('apply.one', {
+                    url: "/personal-info/",
                     templateUrl: "app/apply/partials/personal-info.html"
                 })
-                .state('apply.step2', {
-                    url: "/step-two/",
+                .state('apply.two', {
+                    url: "/current-status/",
                     templateUrl: "app/apply/partials/current-status.html"
                 })
-                .state('apply.step3', {
-                    url: "/step-three/",
+                .state('apply.three', {
+                    url: "/experience/",
                     templateUrl: "app/apply/partials/experience.html"
                 })
-                .state('apply.step4', {
-                    url: "/step-four/",
+                .state('apply.four', {
+                    url: "/finish/",
                     templateUrl: "app/apply/partials/examination.html"
                 })
 
@@ -69,7 +69,7 @@
         ;
 
         $urlRouterProvider
-            .when('/apply', '/apply/step-one/');
+            .when('/apply', '/apply/personal-info/');
     });
 
     app.config(function (AuthProvider) {

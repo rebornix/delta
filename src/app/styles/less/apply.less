@@ -61,13 +61,14 @@
       display: none;
     }
 
-    span {
+    label {
       cursor: pointer;
       position: relative;
       padding-left: 32px;
+      font-weight: normal;
     }
 
-    span:before {
+    label:before {
       border: 1px solid #999999;
       border-radius: 50px;
 
@@ -83,7 +84,7 @@
       margin-top: 5px;
     }
 
-    input[type="radio"]:checked + span:before {
+    input[type="radio"]:checked + label:before {
       background: #f3643c;
       display: block;
     }
@@ -92,6 +93,29 @@
       max-width: 366px;
       position: relative;
       left: 32px;
+    }
+  }
+
+  .experience {
+    margin: 40px 16px;
+
+    .btn-delta-style {
+      background: #f07240;
+    }
+
+    .btn-delta-style:hover {
+      background: #f07540;
+    }
+
+    .btn-linkedin {
+      background: #2672AE;
+    }
+
+    .btn-linkedin:hover {
+      background: #2673AE;
+    }
+
+    .experience-header {
     }
   }
 }
@@ -106,21 +130,6 @@
   padding: 12px;
 }
 
-.experience>div>div:first-child {
-  margin-left: 0;    
-}
-
-.profile {
-  border-radius: 6px;
-  width: 460px;  
-  background-color: #EEEEEE;
-}
-
-.profile-header {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
 .btn-profile {
   border-radius: 4px;
   border: 0;
@@ -129,21 +138,6 @@
   font-size: 14px;
 }
 
-.profile .btn-delta-style {
-  background: #f07240;
-}
-
-.profile .btn-delta-style:hover {
-  background: #f07540;
-}
-
-.profile .btn-linkedin {
-  background: #2672AE;
-}
-
-.profile .btn-linkedin:hover {
-  background: #2673AE;
-}
 
 .exp-entry, .edit-region {
   margin-bottom: 24px;  

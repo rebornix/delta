@@ -17,10 +17,10 @@
     <div class="wizard pull-left">
       <p>简单四步完成报名</p>
       <ol class="mutest">
-        <li><a class="mutest" ui-sref-active="active" ui-sref=".step1">个人信息</a></li>
-        <li><a class="mutest" ui-sref-active="active" ui-sref=".step2">项目信息</a></li>
-        <li><a class="mutest" ui-sref-active="active" ui-sref=".step3">个人档案</a></li>
-        <li><a class="mutest" ui-sref-active="active" ui-sref=".step4">审核</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".one" ng-disable="!isStateAvailable($state.current.name)">个人信息</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".two" ng-disable="!isStateAvailable($state.current.name)">项目信息</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".three" ng-disable="!isStateAvailable($state.current.name)">个人档案</a></li>
+        <li><a class="mutest" ui-sref-active="active" ui-sref=".four" ng-disable="!isStateAvailable($state.current.name)">审核</a></li>
       </ol>
     </div>
   </div>

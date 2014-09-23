@@ -1,13 +1,13 @@
-<div class="container-fluid personal-info" ng-controller="personalInfoController">
+<div class="container-fluid personal-info">
   <div class="row-fluid">
-    <form>
-      <input class="form-control" ng-model="applicantName" placeholder="姓名">
-      <input class="form-control" ng-model="phone" placeholder="联系电话">
-      <input class="form-control" ng-model="wechat" placeholder="微信">
+    <form name="personalInfoForm" novalidate>
+      <input class="form-control" ng-model="personalInfo.applicantName" placeholder="姓名" required>
+      <input class="form-control" ng-model="personalInfo.phone" placeholder="联系电话" required>
+      <input class="form-control" ng-model="personalInfo.wechat" placeholder="微信" required>
+      <div class="text-right pre-next">
+        <button class="btn-md btn-unavailable">上一步</button>
+        <button type="submit" class="btn-md btn-available" ng-disable="personalInfoForm.$invalid" ng-click="submitPersonalInfo(personalInfoForm.$valid)">下一步</button>
+      </div>
     </form>
-    <div class="text-right pre-next">
-      <button class="btn-md btn-unavailable">上一步</button>
-      <button class="btn-md btn-available">下一步</button>
-    </div>
   </div>
 </div>

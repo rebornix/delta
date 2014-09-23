@@ -2,27 +2,27 @@
   <div class="row-fluid">
     <form name="currentStatus">
       <div>
-        <p><input class="" type="radio" name="status"><span class="muted">已经离职，正在创业</span></p>
+        <p><input id="startuping" type="radio" name="status" value="1" ng-model="status.current_status"><label for="startuping" class="muted">已经离职，正在创业</label></p>
       </div>
       <div>
-        <p><input class="" type="radio" name="status"><span class="muted">还没有离职，正在兼职创业</span></p>
+        <p><input id="tostartup" type="radio" name="status" value="2" ng-model="status.current_status"><label for="tostartup" class="muted">还没有离职，正在兼职创业</label></p>
       </div>
       <div>
-        <p><input class="" type="radio" name="status"><span class="muted">还没有离职，有创业想法</span></p>
+        <p><input id="startup-thought" type="radio" name="status" value="3" ng-model="status.current_status"><label for="startup-thought" class="muted">还没有离职，有创业想法</label></p>
       </div>
       <div style="margin-bottom: 60px;">
-        <p><input class="" type="radio" name="status"><span class="muted">其他情况请在此说明</span></p>
-        <textarea class="form-control status-comment"></textarea>
+        <p><input id="other-situation" type="radio" name="status" value="4" ng-model="status.current_status"><label for="other-situation" class="muted">其他情况请在此说明</label></p>
+        <textarea class="form-control status-comment" ng-model="status.description"></textarea>
       </div>
 
       <div>
         <p>如果你正在全职或者兼职创业，请简单介绍下你的产品情况，以帮助我们更好地了解你。</p>
-        <textarea class="form-control" rows="6"></textarea>
+        <textarea class="form-control" rows="6" ng-model="status.productIntroduction"></textarea>
       </div>
     </form>
     <div class="text-right pre-next">
-      <button class="btn-md btn-available">上一步</button>
-      <button class="btn-md btn-available">下一步</button>
+      <button class="btn-md btn-available" ng-click="backToLastState($state.current.name)">上一步</button>
+      <button class="btn-md btn-available" ng-click="submitCurrentStatus()">下一步</button>
     </div>
   </div>
 </div>
