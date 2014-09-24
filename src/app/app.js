@@ -109,7 +109,6 @@
         };
 
         $scope.logout = function () {
-            $.notify('logout', 'info');
             Auth.logout().then(function(oldUser) {
                $state.go('index');
             }, function(error) {
