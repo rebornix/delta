@@ -30,7 +30,7 @@
                 authorizationResult = false;
             },
             getProfile: function (order, state) {
-                return authorizationResult.get('https://api.linkedin.com/v1/people/~:(positions:(id,title,summary,start_date,is-current,end_date,company:(id,name)),educations)?format=json').done(function(data) {
+                return authorizationResult.get('https://api.linkedin.com/v1/people/~:(positions,educations)?format=json').done(function(data) {
                     return data;
                 });
             }
