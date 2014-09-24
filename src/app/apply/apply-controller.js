@@ -2,7 +2,7 @@
 
   var app = angular.module("deltastartup");
 
-  app.controller('applyController', function ($scope, Auth, $http, $state) {
+  app.controller('applyController', function ($scope, Auth, $http, $state, linkedinService) {
     /*
     Auth.currentUser().then(function(user) {
         // User was logged in, or Devise returned
@@ -86,6 +86,13 @@
       */
       stateManager.completeState(states[2]);
       $state.go(states[3]);
+    };
+
+    linkedinService.initialize();
+    $scope.importFromLinkedIn = function() {
+        linkedinService.connectLinkedin().then(linkedinService.getProfile).then(function(data) {
+            console.log(data);
+        });
     };
 
     $scope.addExperience = function (experience) {
