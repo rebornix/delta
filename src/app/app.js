@@ -81,10 +81,12 @@
     });
 
     app.config(function (AuthProvider) {
-        AuthProvider.loginPath('/sign_in');
+        AuthProvider.loginPath('http://10.77.77.100:3000/account/sign_in');
         AuthProvider.loginMethod('POST');
-        AuthProvider.registerPath('sign_up');
+        AuthProvider.registerPath('http://10.77.77.100:3000/account/sign_up');
         AuthProvider.registerMethod('POST');
+        AuthProvider.logoutPath('http://10.77.77.100:3000/account/sign_out');
+        AuthProvider.logoutMethod('DELETE');
     });
 
     app.controller('appController', function ($scope, appService, Auth, $state) {
@@ -97,16 +99,19 @@
         };
 
         $scope.login = function () {
+            $.notify('login', 'success');
             Auth.login($scope.credentials).then(function(user) {
-                $state.go('apply');
+                $state.go('apply.one');
+                $.notify('login succeed', 'success');
             }, function(error) {
                 console.log(error);
             });
         };
 
         $scope.logout = function () {
+            $.notify('logout', 'info');
             Auth.logout().then(function(oldUser) {
-               // alert(oldUser.name + "you're signed out now.");
+               $state.go('index');
             }, function(error) {
                 // An error occurred logging out.
             });
