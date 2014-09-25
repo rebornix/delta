@@ -1,7 +1,7 @@
 <div ui-view="jumbotron"></div>
 <div class="contact" ng-controller="contactController">
   <h3 class="text-center">联系方式</h3>
-  <form accept-charset="UTF-8" action="/contact/deliver" autocomplete="off" enctype="multipart/form-data" method="post" name="contact_form" novalidate="" role="form" style="margin-left: 20%;margin-right: 20%;">
+  <form accept-charset="UTF-8" name="contact_form" style="margin-left: 20%;margin-right: 20%;" ng-submit="contact()">
     <header class="info" id="header">
       <h4>情况描述</h4>
       <div>请在这里描述你的问题，我们的工作人员将会尽快联系你。</div>
@@ -12,15 +12,15 @@
         您的邮箱：
         <span class="required-flag" id="req_1">*</span>
       </label>
-      <input class="form-control" id="email" maxlength="255" name="email" placeholder="Enter email" required="" tabindex="1" type="text" value="">
+      <input class="form-control" id="user_email" maxlength="255" name="email" placeholder="邮箱地址" type="text" ng-model="feedback.email" required>
     </div>
     <div class="form-group">
       <label for="description" id="description">
         问题描述：
         <span class="required-flag" id="req_2">*</span>
       </label>
-      <textarea class="form-control form-group" cols="50" id="description" name="description" required="" rows="10" spellcheck="true" style="width: 100%" tabindex="2"></textarea>
+      <textarea class="form-control form-group" cols="50" id="description" name="description" required="" rows="10" spellcheck="true" style="width: 100%" tabindex="2" ng-model="feedback.description" required></textarea>
     </div>
-    <input class="btn btn-default" id="saveForm" name="saveForm" type="submit" value="提交">
+    <input class="btn btn-default" id="saveForm" name="saveForm" type="submit" value="提交" ng-disabled="contact_form.$invalid">
   </form>
 </div>
