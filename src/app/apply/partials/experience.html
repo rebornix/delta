@@ -4,30 +4,29 @@
       <div class="container-fluid experience-header">
         <h5 class="pull-left"><strong>职业经历</strong></h5>
         <div class="action pull-right">
-          <button class="btn-sm btn-profile btn-linkedin" ng-click="importFromLinkedIn()">导入Linkedin</button>
           <button class="btn-sm btn-profile btn-delta-style btn-add-exp" ng-click="addExperience()">添加</button>
         </div>
       </div>
       <div>
-        <div class="exp-entry container-fluid" ng-repeat="experience in experiences" ng-init="!experience.company && (isInEditing = true)">
+        <div class="exp-entry container-fluid" ng-repeat="experience in experiences" ng-init="!experience.company_name && (isInEditing = true)">
           <div class="col-md-9" ng-show="!isInEditing">
             <p class="where-and-when">
-              <span class="where">{{ experience.company }}</span>
+              <span class="where">{{ experience.company_name }}</span>
               <span class="duration">{{ experience.duration }}</span>
             </p>
             <p class="title"><strong>{{ experience.title }}</strong></p>
             <p class="muted description">{{ experience.description }}</p>
           </div>
           <div class="edit-region col-md-9" ng-show="isInEditing">
-            <input class="form-control" type="text" ng-model="experience.company" placeholder="公司名称" required />
-            <input class="form-control" type="text" ng-model="experience.duration" placeholder="时间(e.g 2010.04 - 2013.04)" required />
+            <input class="form-control" type="text" ng-model="experience.company_name" placeholder="公司" required />
+            <input class="form-control" type="text" ng-model="experience.duration" placeholder="时间，e.g 2010.04 - 2013.04" required />
             <input class="form-control" type="text" ng-model="experience.title" placeholder="职位" required />
-            <textarea class="form-control" rows="3" ng-model="experience.description" placeholder="详细描述"></textarea>
+            <textarea class="form-control" rows="3" ng-model="experience.description" placeholder="详细描述" required></textarea>
           </div>
           <div class="col-md-3 text-right">
             <div class="icon-edit" ng-show="!isInEditing" ng-click="isInEditing = true"></div>
             <!--<button class="btn-sm btn-primary btn-profile" ng-show="!isInEditing" ng-click="isInEditing = true">M</button>-->
-            <button class="btn-sm btn-primary btn-profile" ng-show="isInEditing" ng-click="isInEditing = false; saveExperience(experience)">S</button>
+            <div class="icon-edit" ng-show="isInEditing" ng-click="isInEditing = false; saveExperience(experience)"></div>
             <!--<button class="btn-sm btn-primary btn-profile" ng-click="removeExperience(experience)">D</button>-->
             <div class="icon-del" ng-click="removeExperience(experience)"></div>
           </div>
@@ -43,24 +42,24 @@
         </div>
       </div>
       <div>
-        <div class="exp-entry container-fluid" ng-repeat="education in educations" ng-init="!education.where && (isInEditing = true)">
+        <div class="exp-entry container-fluid" ng-repeat="education in educations" ng-init="!education.school && (isInEditing = true)">
           <div class="col-md-9" ng-show="!isInEditing">
             <p class="where-and-when">
-              <span class="where">{{ education.where }}</span>
+              <span class="where">{{ education.school }}</span>
               <span class="duration">{{ education.duration }}</span>
             </p>
             <p class="title"><strong>{{ education.degree }}</strong></p>
             <p class="muted description">{{ education.description }}</p>
           </div>
           <div class="edit-region col-md-9" ng-show="isInEditing">
-            <input class="form-control" type="text" ng-model="education.where" required>
-            <input class="form-control" type="text" ng-model="education.duration" required>
-            <input class="form-control" type="text" ng-model="education.degree" required>
-            <textarea class="form-control" rows="3" ng-model="education.description" required></textarea>
+            <input class="form-control" type="text" ng-model="education.school" placeholder="学校" required>
+            <input class="form-control" type="text" ng-model="education.duration" placeholder="时间，e.g 2008.09 - 2012.06" required>
+            <input class="form-control" type="text" ng-model="education.degree" placeholder="学历" required>
+            <textarea class="form-control" rows="3" ng-model="education.description" placeholder="详细描述" required></textarea>
           </div>
           <div class="col-md-3 text-right">
             <div class="icon-edit" ng-show="!isInEditing" ng-click="isInEditing = true"></div>
-            <button class="btn-sm btn-primary btn-profile" ng-show="isInEditing" ng-click="isInEditing = false; saveEducation(education)">S</button>
+            <div class="icon-edit" ng-show="isInEditing" ng-click="isInEditing = false; saveEducation(education)"></div>
             <div class="icon-del" ng-click="removeEducation(education)"></div>
           </div>
         </div>

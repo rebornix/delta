@@ -48,6 +48,10 @@
                     'jumbotron@apply': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
+                .state('apply.finished', {
+                  url: "/finished/",
+                  templateUrl: "app/apply/apply-finished.html"
+                })
                 .state('apply.one', {
                     url: "/personal-info/",
                     templateUrl: "app/apply/partials/personal-info.html"
