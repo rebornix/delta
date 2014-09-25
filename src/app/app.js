@@ -1,6 +1,11 @@
 (function () {
     var app = angular.module('deltastartup', ['ui.router', 'deltastartup.services', 'Devise']);
 
+    app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+    ]);
     app.config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('index', {
@@ -22,6 +27,13 @@
                 views: {
                     '': { templateUrl: "app/contact/contact.html" },
                     'jumbotron@contact': { templateUrl: "app/shared/jumbotron-other.html" }
+                }
+            })
+            .state('kudo', {
+                url: "/kudo",
+                views: {
+                    '': { templateUrl: "app/kudo/kudo.html" },
+                    'jumbotron@kudo': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
             // apply
@@ -81,12 +93,15 @@
     });
 
     app.config(function (AuthProvider) {
-        AuthProvider.loginPath('http://10.77.77.100:3000/account/sign_in');
+        AuthProvider.loginPath('http://10.77.77.104:3000/account/sign_in');
         AuthProvider.loginMethod('POST');
-        AuthProvider.registerPath('http://10.77.77.100:3000/account/sign_up');
+        AuthProvider.registerPath('http://10.77.77.104:3000/account/sign_up');
         AuthProvider.registerMethod('POST');
-        AuthProvider.logoutPath('http://10.77.77.100:3000/account/sign_out');
+        AuthProvider.logoutPath('http://10.77.77.104:3000/account/sign_out');
         AuthProvider.logoutMethod('DELETE');
+        AuthProvider.parse(function(response){
+            return response.data.user;
+        });
     });
 
     app.controller('appController', function ($scope, appService, Auth, $state) {
@@ -99,11 +114,11 @@
         };
 
         $scope.login = function () {
-            $.notify('login', 'success');
             Auth.login($scope.credentials).then(function(user) {
                 $state.go('apply.one');
                 $.notify('login succeed', 'success');
             }, function(error) {
+                $.notify(error, 'success');
                 console.log(error);
             });
         };
@@ -136,6 +151,11 @@
         $scope.$on('devise:logout', function(event, oldCurrentUser) {
             // ...
             $scope.sessionBtn = "app/user/sign_in_btn.html";
+        });
+
+        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
+            //TODO, try to login again
+            deferred.reject(xhr.data.info);
         });
     });
 
