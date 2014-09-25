@@ -7,7 +7,7 @@
         // User was logged in, or Devise returned
         // previously authenticated session.
         console.log(Auth._currentUser);
-        
+
     }, function(error) {
         $state.go('sign_in');
     });
@@ -30,7 +30,7 @@
     };
 
     $scope.submitPersonalInfo = function () {
-      $http.put("http://10.77.77.100:3000/users/1/", $scope.personalInfo, { headers: { 'Content-Type': 'application/json' }})
+      $http.put("http://www.deltastartup.com:3000/users/1/", $scope.personalInfo, { headers: { 'Content-Type': 'application/json' }})
         .success(function (data, status, headers, config) {
           $state.go(states[1]);
         })
@@ -40,7 +40,7 @@
     };
 
     $scope.submitCurrentStatus = function () {
-      $http.put("http://10.77.77.100:3000/users/1/", $scope.currentStatus)
+      $http.put("http://www.deltastartup.com/users/1/", $scope.currentStatus)
         .success(function (data, status, headers, config) {
           stateManager.completeState(states[1]);
           $state.go(states[2]);
@@ -58,7 +58,7 @@
         $window.alert("Make sure you fill both the experience and education.");
         return;
       }
-      $http.post("http://10.77.77.100:3000/users/1/").success(function () {
+      $http.post("http://www.deltastartup.com/users/1/").success(function () {
         $state.go(states[3]);
       });
     };
@@ -78,7 +78,7 @@
       // fake
       /*
       $http.post().success(function () {
-      
+
       });
       */
     };
@@ -97,7 +97,7 @@
       // fake
       /*
       $http.post().success(function () {
-      
+
       });
       */
     };

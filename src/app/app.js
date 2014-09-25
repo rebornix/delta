@@ -93,11 +93,11 @@
     });
 
     app.config(function (AuthProvider) {
-        AuthProvider.loginPath('http://10.77.77.104:3000/account/sign_in');
+        AuthProvider.loginPath('http://www.deltastartup.com:3000/account/sign_in');
         AuthProvider.loginMethod('POST');
-        AuthProvider.registerPath('http://10.77.77.104:3000/account/sign_up');
+        AuthProvider.registerPath('http://www.deltastartup.com:3000/account/sign_up');
         AuthProvider.registerMethod('POST');
-        AuthProvider.logoutPath('http://10.77.77.104:3000/account/sign_out');
+        AuthProvider.logoutPath('http://www.deltastartup.com:3000/account/sign_out');
         AuthProvider.logoutMethod('DELETE');
         AuthProvider.parse(function(response){
             return response.data.user;
