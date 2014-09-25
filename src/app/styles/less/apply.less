@@ -32,7 +32,7 @@
       a:hover {
         color: #f3643c;
       }
-      a.active {
+      span.active {
         color: #f3643c;  
       }
     }
@@ -99,6 +99,11 @@
   .experience {
     margin: 40px 16px;
 
+    .icon-del, .icon-edit, .icon-del-2x, .icon-edit-2x {
+      cursor: pointer;  
+      display: inline-block;
+    }
+
     .btn-delta-style {
       background: #f07240;
     }
@@ -109,14 +114,51 @@
 
     .btn-linkedin {
       background: #2672AE;
+      width: 140px;
+      height: 32px;
+      font-size: 16px;
     }
 
     .btn-linkedin:hover {
       background: #2673AE;
     }
 
-    .experience-header {
+    .btn-add-exp {
+      width: 60px;  
+      height: 32px;
+      font-size: 16px;
     }
+
+    form>div>div:first-child {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .experience-header {
+      margin-bottom: 40px;  
+
+      h5 {
+        display: inline-block;
+        vertical-align: text-top;
+        font-size: 16px;
+      }
+    }
+
+    #profession {
+      margin-bottom: 44px;
+    }
+
+    #education {
+      margin-bottom: 60px;
+    }
+
+
+    .exp-entry {
+      padding-left: 0;  
+      padding-right: 0;  
+      margin-bottom: 16px;
+    }
+
   }
 }
 
@@ -138,8 +180,7 @@
   font-size: 14px;
 }
 
-
-.exp-entry, .edit-region {
+.exp-entry .edit-region {
   margin-bottom: 24px;  
 }
 
@@ -180,10 +221,6 @@
   color: white;
 }
 
-.pre-next .btn-unavailable:hover {
-  background: #4d4d4d;  
-}
-
 .pre-next .btn-available {
   margin-left: 10px;  
   background: #f3643c;
@@ -196,5 +233,9 @@
 }
 
 .pre-next .btn-available:hover {
-  background: #d65234;  
+  background: #d65234;
+}
+
+.pre-next .btn-available:disabled {
+  background: #808080;
 }

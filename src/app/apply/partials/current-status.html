@@ -1,6 +1,6 @@
 <div class="container-fluid current-status">
   <div class="row-fluid">
-    <form name="currentStatus">
+    <form name="currentStatusForm">
       <div>
         <p><input id="startuping" type="radio" name="status" value="1" ng-model="status.current_status"><label for="startuping" class="muted">已经离职，正在创业</label></p>
       </div>
@@ -22,7 +22,7 @@
     </form>
     <div class="text-right pre-next">
       <button class="btn-md btn-available" ng-click="backToLastState($state.current.name)">上一步</button>
-      <button class="btn-md btn-available" ng-click="submitCurrentStatus()">下一步</button>
+      <button class="btn-md btn-available" ng-disabled="!status.current_status" ng-click="submitCurrentStatus()">下一步</button>
     </div>
   </div>
 </div>

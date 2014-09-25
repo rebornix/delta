@@ -2,18 +2,22 @@
 
   var app = angular.module("deltastartup");
 
-  app.controller('applyController', function ($scope, Auth, $http, $state, linkedinService) {
-    /*
+  app.controller('applyController', function ($scope, Auth, $http, $state, $window, linkedinService) {
     Auth.currentUser().then(function(user) {
         // User was logged in, or Devise returned
         // previously authenticated session.
+        console.log(Auth._currentUser);
         
     }, function(error) {
         $state.go('sign_in');
     });
-    */
 
     $scope.$state = $state;
+
+    $scope.personalInfo = {};
+    $scope.currentStatus = {};
+    $scope.experiences = [];
+    $scope.educations = [];
 
     var states = [
       // tentative
@@ -21,56 +25,28 @@
       'apply.three', 'apply.four'
     ];
 
-    var stateManager = (function () {
-
-      var step = 0;
-
-      return {
-        completeState: function (state) {
-          step = Math.max(step, states.indexOf(state));
-        },
-        revokeState: function (state) {
-          var index = states.indexOf(state);
-          if (index >= 0) {
-            step = Math.min(step, index)
-          }
-        },
-        isStateAvailable: function (state) {
-          return states.indexOf(state) <= step;
-        }
-      };
-    
-    })();
-
-    $http.get('app/apply/json/application.json').success(function (data, status, headers, config) {
-      $scope.personalInfo = data.personalInfo;
-      $scope.experiences = data.experiences;
-      $scope.educations = data.educations;
-      $scope.status = data.status;
-    });
-
     $scope.isStateAvailable = function (state) {
       return stateManager.isStateAvailable(state);
     };
 
     $scope.submitPersonalInfo = function () {
-      /*
-      $http.post().success(function () {
-      
-      });
-      */
-      stateManager.completeState(states[0]);
-      $state.go(states[1]);
+      $http.put("http://10.77.77.100:3000/users/1/", $scope.personalInfo, { headers: { 'Content-Type': 'application/json' }})
+        .success(function (data, status, headers, config) {
+          $state.go(states[1]);
+        })
+        .error(function (data, status, headers, config) {
+          $state.go(states[1]);
+        });
     };
 
     $scope.submitCurrentStatus = function () {
-      /*
-      $http.post().success(function () {
-      
-      });
-      */
-      stateManager.completeState(states[1]);
-      $state.go(states[2]);
+      $http.put("http://10.77.77.100:3000/users/1/", $scope.currentStatus)
+        .success(function (data, status, headers, config) {
+          stateManager.completeState(states[1]);
+          $state.go(states[2]);
+        })
+        .error(function () {
+        });
     };
 
     $scope.backToLastState = function (currentState) {
@@ -78,14 +54,13 @@
     };
 
     $scope.submitExperience = function () {
-      /*
-      $http.post().success(function () {
-      
+      if ($scope.educations.length <=0 || $scope.experiences.length <= 0) {
+        $window.alert("Make sure you fill both the experience and education.");
+        return;
+      }
+      $http.post("http://10.77.77.100:3000/users/1/").success(function () {
         $state.go(states[3]);
       });
-      */
-      stateManager.completeState(states[2]);
-      $state.go(states[3]);
     };
 
     linkedinService.initialize();
@@ -96,24 +71,41 @@
     };
 
     $scope.addExperience = function (experience) {
+      $scope.experiences.push({});
     };
 
     $scope.saveExperience = function (experience) {
+      // fake
+      /*
+      $http.post().success(function () {
+      
+      });
+      */
     };
 
     $scope.removeExperience = function (experience) {
-      $scope.experiences.splice($scope.experiences.indexOf(experience), 1);
+      if ($window.confirm("确认删除？") === true) {
+        $scope.experiences.splice($scope.experiences.indexOf(experience), 1);
+      }
     };
 
     $scope.addEducation = function () {
-    
+      $scope.educations.push({});
     };
 
     $scope.saveEducation = function (education) {
+      // fake
+      /*
+      $http.post().success(function () {
+      
+      });
+      */
     };
 
     $scope.removeEducation = function (education) {
-      $scope.educations.splice($scope.educations.indexOf(education), 1);
+      if ($window.confirm("确认删除？") === true) {
+        $scope.educations.splice($scope.educations.indexOf(education), 1);
+      }
     };
 
   });
