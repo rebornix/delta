@@ -107,6 +107,10 @@
     });
 
     app.controller('appController', function ($scope, appService, Auth, $state) {
+        Auth.currentUser().then(function(user){
+            console.log(Auth.isAuthenticated());
+            $scope.sessionBtn = Auth.isAuthenticated() ? "app/user/sign_out_btn.html": "app/user/sign_in_btn.html";
+        });
         $scope.sessionBtn = Auth.isAuthenticated() ? "app/user/sign_out_btn.html": "app/user/sign_in_btn.html";
 
         $scope.credentials = {
@@ -120,7 +124,7 @@
                 $state.go('apply.one');
                 $.notify('login succeed', 'success');
             }, function(error) {
-                $.notify(error, 'success');
+                $.notify(error, 'warn');
                 console.log(error);
             });
         };
