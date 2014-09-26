@@ -112,20 +112,6 @@ module.exports = function (grunt) {
             }
         },
 
-        connect: {
-            server: {
-                options: {
-
-                },
-                proxies: [
-                    {
-                        host: "127.0.0.1",
-                        port: 8080
-                    }
-                ]
-            }
-        },
-
         express:{
             options: {
                 port: 9000
@@ -180,13 +166,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-spritesmith');
-    grunt.loadNpmTasks('grunt-connect-proxy');
 
     // Custom tasks.
     grunt.task.loadTasks('tasks');
 
     // Alias tasks
-    grunt.registerTask('dev', ['clean', 'bowerInstall', 'less', 'sprite', 'configureProxies:server', 'express:dev','watch']);
+    grunt.registerTask('dev', ['clean', 'bowerInstall', 'less', 'sprite', 'express:dev','watch']);
     grunt.registerTask('prod', ['clean', 'bowerInstall', 'useminPrepare', 'copy', 'less', 'sprite', 'concat', 'ngmin', 'uglify', 'cssmin', 'rev', 'usemin']);
 	grunt.registerTask('serve', ['prod', 'express:dist', 'watch']);
 };
