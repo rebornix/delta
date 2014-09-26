@@ -12,10 +12,6 @@
 
     $scope.$state = $state;
 
-    $http.defaults.headers.put = {
-      "Content-Type": "application/json"
-    };
-
     var userApplicationApi;
 
     Auth.currentUser().then(function(user) {

@@ -127,6 +127,8 @@
         });
         $scope.sessionBtn = Auth.isAuthenticated() ? "app/user/sign_out_btn.html": "app/user/sign_in_btn.html";
 
+        $scope.$state = $state;
+
         $scope.credentials = {
             email: '',
             password: '',

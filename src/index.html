@@ -14,19 +14,19 @@
     <div class="header">
       <div>
       <ul class="navigator pull-left">
-        <li>
+        <li ng-class="{active: $state.includes('index')}">
           <a class="delta-active" href="/">关于我们</a>
         </li>
-        <li>
+        <li ng-class="{active: $state.includes('course')}">
           <a href="#/course">课程公告</a>
         </li>
-        <li>
+        <li ng-class="{active: $state.includes('apply')}">
           <a href="#/apply">课程报名</a>
         </li>
-        <li>
+        <li ng-class="{active: $state.includes('contact')}">
           <a href="#/contact">联系我们</a>
         </li>
-        <li>
+        <li ng-class="{active: $state.includes('kudo')}">
           <a href="#/kudo">用户好评</a>
         </li>
 
