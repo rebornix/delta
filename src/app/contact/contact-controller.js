@@ -1,7 +1,8 @@
 (function() {
     var app = angular.module('deltastartup');
 
-    app.controller('contactController', function($scope, Auth, $http) {
+    app.controller('contactController', function($scope, $rootScope, Auth, $http, $state) {
+
         $scope.feedback = {
             email: '',
             description: ''
@@ -15,10 +16,8 @@
             $scope.feedback.email = Auth._currentUser.email;
         });
 
-        var siteUri = "http://www.deltastartup.com:3000/";
-
         $scope.contact = function() {
-            var userApplicationApi = siteUri + "contact";
+            var userApplicationApi = $rootScope.uri + "/contact";
             $http.post(userApplicationApi, $scope.feedback)
             .success(function (data, status, headers, config) {
               $.notify("我们已经收到你的反馈.", "success");
@@ -28,5 +27,5 @@
               $.notify("Fail to submit your feedback. Please try again.", "error");
             });
         };
-    }); 
+    });
 }());

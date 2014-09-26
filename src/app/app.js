@@ -1,6 +1,13 @@
 (function () {
     var app = angular.module('deltastartup', ['ui.router', 'deltastartup.services', 'Devise']);
 
+    var uri = 'http://www.deltastartup.com:3000'
+
+    //Add this to have access to a global variable
+    app.run(function ($rootScope) {
+        $rootScope.uri = uri;
+    });
+
     app.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -99,11 +106,11 @@
     });
 
     app.config(function (AuthProvider) {
-        AuthProvider.loginPath('http://www.deltastartup.com:3000/account/sign_in');
+        AuthProvider.loginPath(uri + '/account/sign_in');
         AuthProvider.loginMethod('POST');
-        AuthProvider.registerPath('http://www.deltastartup.com:3000/account/sign_up');
+        AuthProvider.registerPath(uri + '/account/sign_up');
         AuthProvider.registerMethod('POST');
-        AuthProvider.logoutPath('http://www.deltastartup.com:3000/account/sign_out');
+        AuthProvider.logoutPath(uri + '/account/sign_out');
         AuthProvider.logoutMethod('DELETE');
         AuthProvider.parse(function(response){
             return response.data.user;

@@ -3,7 +3,7 @@
   var app = angular.module("deltastartup");
 
   app.controller('applyController', function (
-      $scope, Auth, $http, $state, $window, linkedinService) {
+      $scope, $rootScope, Auth, $http, $state, $window, linkedinService) {
 
     $scope.personalInfo = {};
     $scope.project = {};
@@ -16,14 +16,12 @@
       "Content-Type": "application/json"
     };
 
-    var siteUri = "http://www.deltastartup.com:3000/";
-
     var userApplicationApi;
 
     Auth.currentUser().then(function(user) {
       var currentUser = Auth._currentUser;
 
-      userApplicationApi = siteUri + "users/" + currentUser.id + "/";
+      userApplicationApi = $rootScope.uri + "/user/";
 
       $http.get(userApplicationApi)
         .success(function (data, status, headers, config) {
@@ -65,29 +63,56 @@
     };
 
     $scope.submitProject = function () {
-      $http.post(userApplicationApi + "project/", $scope.project)
-        .success(function (data, status, headers, config) {
-          $.notify("Success to submit your project.", "success");
-          $state.go(states[2]);
-        })
-        .error(function (data, status, headers, config) {
-          $.notify("Fail to submit your project infomation. Please try again.", "error");
-          $state.go(states[2]);
-        });
+      success_func = function (data, status, headers, config) {
+        $.notify("Success to submit your project.", "success");
+        $state.go(states[2]);
+      }
+      error_func = function (data, status, headers, config) {
+        $.notify("Fail to submit your project infomation. Please try again.", "error");
+        $state.go(states[1]);
+      }
+      url = userApplicationApi + "project/"
+      if ($scope.project.id == null){
+        $http.post(url, $scope.project).success(success_func).error(error_func);
+      }else{
+        $http.put(url, $scope.project).success(success_func).error(error_func);
+      }
     };
 
     $scope.submitExperience = function () {
-      if ($scope.educations.length <=0 || $scope.experiences.length <= 0) {
+      if ($scope.educations.length <= 0 || $scope.experiences.length <= 0) {
         $window.alert("Make sure you fill both the experience and education.");
         return;
       }
-      $http.post(userApplicationApi + "expers/")
-        .success(function (data, status, headers, config) {
+      sucss_func = function (data, status, headers, config) {
           $state.go(states[3]);
-        })
-        .error(function (data, status, headers, config) {
+      }
+      error_func = function (data, status, headers, config) {
           $.notify("Fail to submit your experiences. Please try again.", "error");
-        });
+      }
+      url = userApplicationApi + "expers";
+      var post_data = []; var put_data = [];
+      for(var i = 0; i < $scope.experiences.length; i++){
+        item  = $scope.experiences[i]
+        if (item.id == null){
+          post_data.push(item)
+        }else{
+          put_data.push(item)
+        }
+      }
+      for(var i = 0; i < $scope.educations.length; i++){
+        item  = $scope.educations[i]
+        if (item.id == null){
+          post_data.push(item)
+        }else{
+          put_data.push(item)
+        }
+      }
+
+      if(post_data.length > 0)
+        $http.post(url, post_data).success(sucss_func).error(error_func);
+      if(put_data.length > 0)
+        $http.put(url+ "/update_all", put_data).success(sucss_func).error(error_func);
     };
 
     $scope.backToLastState = function (currentState) {
@@ -133,7 +158,7 @@
     };
 
     $scope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
-      if (states.indexOf(fromState.name) < 0 || 
+      if (states.indexOf(fromState.name) < 0 ||
           (states.indexOf(fromState.name) > states.indexOf(toState.name))) {
         return false;   // TBD
       }
@@ -141,9 +166,9 @@
       switch (toState.name) {
         case states[1]:
           $http.get(userApplicationApi + "project/")
-            .success(function (data, status, headers, config) {
-              if (data.project) {
-                var project = data.project;
+            .success(function (project, status, headers, config) {
+              if (project) {
+                $scope.project.id = project.id
                 $scope.project.current_status = project.current_status;
                 $scope.project.status_description = project.status_description;
                 $scope.project.idea_description = project.idea_description;
@@ -156,8 +181,10 @@
         case states[2]:
           $http.get(userApplicationApi + "expers/")
             .success(function (data, status, headers, config) {
-              $scope.experiences = data.expers.experience || [];
-              $scope.educations = data.expers.education || [];
+              if (data.length != 0) {
+                $scope.experiences = data.expers || [];
+                $scope.educations = data.edus || [];
+              }
             })
             .error(function (data, status, headers, config) {
               $.notify("Fail to fetch experiences, Please try again.", "error");
