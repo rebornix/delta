@@ -26,13 +26,24 @@ module.exports = function (grunt) {
 		copy: {
             dist: {
                 files: [
+                    {
+                        expand: true,
+                        cwd: '<%= delta.app %>/app/',
+                        src: ['**/*.html'],
+                        dest: '<%= delta.dist %>/app/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= delta.app %>/css/',
+                        src: ['**/*.{css,png}'],
+                        dest: '<%= delta.dist %>/css/'
+                    },
 					{
                         expand: true,
                         cwd: '<%= delta.app %>/fonts/',
                         src: ['**/*.{ttf,eot,svg,woff}'],
                         dest: '<%= delta.dist %>/fonts/'
                     },
-
                     {
                         expand: true,
                         cwd: '<%= delta.app %>/',
