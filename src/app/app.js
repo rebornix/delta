@@ -113,6 +113,9 @@
     app.controller('appController', function ($scope, appService, Auth, $state) {
         Auth.currentUser().then(function(user){
             console.log(Auth.isAuthenticated());
+            if (Auth.isAuthenticated()) {
+                $scope.$broadcast('login', 'true');
+            }
             $scope.sessionBtn = Auth.isAuthenticated() ? "app/user/sign_out_btn.html": "app/user/sign_in_btn.html";
         });
         $scope.sessionBtn = Auth.isAuthenticated() ? "app/user/sign_out_btn.html": "app/user/sign_in_btn.html";
