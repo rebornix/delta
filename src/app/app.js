@@ -16,6 +16,18 @@
         $httpProvider.defaults.headers.common["Accept"] = "application/json";
         $httpProvider.defaults.withCredentials = true;
     }]);
+
+    app.applyTemplateProvider = ['$http', '$state', 'Auth', function($http, $state, Auth) {
+        Auth.currentUser().then(function(user) {
+          return $http.get('app/apply/apply.html').then(function (response) {
+              return response.data;
+          });
+        }, function(error) {
+            $.notify("请先登录");
+            $state.go('sign_in');
+        });
+    }];
+
     app.config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('index', {
@@ -52,7 +64,7 @@
                 abstract: true,
                 controller: 'applyController',
                 views: {
-                    '': { templateUrl: "app/apply/apply.html" },
+                    '': { templateProvider: app.applyTemplateProvider },
                     'jumbotron@apply': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
