@@ -46,6 +46,12 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd: '<%= delta.app %>/images/',
+                        src: ['**/*.{png}'],
+                        dest: '<%= delta.dist %/images/>'
+                    },
+                    {
+                        expand: true,
                         cwd: '<%= delta.app %>/',
                         src: ['*.{html,ico,js,json}'],
                         dest: '<%= delta.dist %>/'
