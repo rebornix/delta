@@ -1,6 +1,7 @@
 (function () {
     var app = angular.module('deltastartup', ['ui.router', 'deltastartup.services', 'Devise']);
 
+    //var uri = 'http://0.0.0.0:3000'
     var uri = 'http://www.deltastartup.com:3000'
 
     //Add this to have access to a global variable
@@ -108,7 +109,7 @@
     app.config(function (AuthProvider) {
         AuthProvider.loginPath(uri + '/account/sign_in');
         AuthProvider.loginMethod('POST');
-        AuthProvider.registerPath(uri + '/account/sign_up');
+        AuthProvider.registerPath(uri + '/account');
         AuthProvider.registerMethod('POST');
         AuthProvider.logoutPath(uri + '/account/sign_out');
         AuthProvider.logoutMethod('DELETE');
@@ -155,7 +156,7 @@
 
         $scope.register = function () {
             Auth.register($scope.credentials).then(function(registeredUser) {
-                $state.go('apply');
+                $state.go('apply.one');
             }, function(error) {
                 // Registration failed...
             });
