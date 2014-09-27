@@ -16,7 +16,10 @@
         </div>
       </div>
       <div>
-        <input autocomplete="off" name="user_password_confirmation" placeholder="密码" type="password" ng-minlength=8 ng-model="password_confirmation" required>
+        <input autocomplete="off" name="user_password_confirmation" placeholder="重复密码" type="password" ng-minlength=8 ng-model="credentials.password_confirmation" required>
+        <div ng-show="credentials.password != credentials.password_confirmation" class="inline-errors">
+          <span>密码不相同</span>
+        </div>
       </div>
       <div class="text">
         点击“注册”按钮, 代表您已经阅读并且接受 GuruDigger
@@ -24,7 +27,7 @@
         <a href="http://gurudigger.com/home/privacy" target="_blank">隐私条例</a>。
       </div>
       <div>
-        <input type="submit" ng-disabled="sign_up_form.$invalid" value="注册"/>
+        <input type="submit" ng-disabled="sign_up_form.$invalid || credentials.password != credentials.password_confirmation" value="注册"/>
       </div>
     </form>
   </div>

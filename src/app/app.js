@@ -156,7 +156,9 @@
 
         $scope.register = function () {
             Auth.register($scope.credentials).then(function(registeredUser) {
-                $state.go('apply.one');
+                Auth.login($scope.credentials).then(function() {
+                    $state.go('apply.one');
+                });
             }, function(error) {
                 // Registration failed...
             });
