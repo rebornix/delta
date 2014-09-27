@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('deltastartup', ['ui.router', 'deltastartup.services', 'Devise']);
+    var app = angular.module('deltastartup', ['ui.router', 'deltastartup.services', 'Devise', 'ngRetina']);
 
     //var uri = 'http://0.0.0.0:3000'
     var uri = 'http://www.deltastartup.com:3000'
