@@ -18,13 +18,13 @@
     }]);
 
     app.applyTemplateProvider = ['$http', '$state', 'Auth', function($http, $state, Auth) {
-        return Auth.currentUser().then(function(user) {
+         return Auth.currentUser().then(function(user) {
           return $http.get('app/apply/apply.html').then(function (response) {
               return response.data;
           });
         }, function(error) {
-            $.notify("请先登录");
-            $state.go('sign_in');
+            $.notify("请先注册登录");
+            $state.go('sign_up');
         });
     }];
 

@@ -76,7 +76,7 @@
         font-size: 16px;
     }
     button:hover {
-        background: #999999;
+        background: #f07240;
     }
 }
 .header-home {
@@ -237,6 +237,33 @@ button.btn-delta:visited {
     h3 {
         margin-bottom: 36px;
     }
+    .btn {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: normal;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background: #f3643c;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .btn:disabled {
+        background: #808080;
+    }
+    .btn:hover {
+        color: white;
+        background: #ff8c64;
+    }
 }
 
 
@@ -279,6 +306,16 @@ footer a {
         overflow: hidden;
     }
 
+    .btn-available {
+        background: #f3643c;
+        border: 0px;
+        color: white;
+        font-size: 18px;
+    }
+    .btn-available:disabled {
+        background: #808080;
+    }
+
     .text {
         width: 290px;
         margin-left: 30px;
@@ -300,4 +337,17 @@ input.ng-invalid {
 }
 textarea.ng-invalid {
   border: 1px solid #EE9672;
+}
+
+.btn-available {
+    background: #f3643c;
+    border: 0px;
+    color: white;
+    font-size: 18px;
+}
+.btn-available:disabled {
+    background: #808080;
+}
+.btn-available:hover {
+    background: #ff8c64;
 }

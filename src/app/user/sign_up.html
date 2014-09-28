@@ -24,10 +24,10 @@
       <div class="text">
         点击“注册”按钮, 代表您已经阅读并且接受 GuruDigger
         <a href="http://gurudigger.com/home/terms" target="_blank">服务条款</a>以及
-        <a href="http://gurudigger.com/home/privacy" target="_blank">隐私条例</a>。
+        <a href="http://gurudigger.com/home/privacy" target="_blank">隐私条例</a>。If you already have an account, <a href="#/sign_in">sign in</a> here
       </div>
       <div>
-        <input type="submit" ng-disabled="sign_up_form.$invalid || credentials.password != credentials.password_confirmation" value="注册"/>
+        <input type="submit"  class="btn-available" ng-disabled="sign_up_form.$invalid || credentials.password != credentials.password_confirmation" value="注册"/>
       </div>
     </form>
   </div>
