@@ -12,7 +12,7 @@
       </div>
       <div style="margin-bottom: 60px;">
         <p><input id="other-situation" type="radio" name="status" value="4" ng-model="project.current_status"><label for="other-situation" class="muted">其他情况请在此说明</label></p>
-        <textarea class="form-control status-comment" ng-model="project.status_description"></textarea>
+        <textarea class="form-control status-comment" ng-model="project.status_description" ng-hide="project.current_status != 4"></textarea>
       </div>
 
       <div>
