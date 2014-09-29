@@ -4,6 +4,7 @@
     app.controller('contactController', function($scope, $rootScope, Auth, $http, $state) {
         $scope.feedback = {
             email: '',
+            name: '',
             description: ''
         };
 

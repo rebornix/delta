@@ -1,8 +1,20 @@
 <div class="container-fluid personal-info">
   <div class="row-fluid">
     <form name="personalInfoForm" novalidate>
+      <label for="email" id="title_name">
+        您的姓名：
+        <span class="required-flag" id="req_1">*</span>
+      </label>
       <input class="form-control" ng-model="personalInfo.applicant_name" placeholder="姓名" required />
+      <label for="email" id="title_phone">
+        您的号码：
+        <span class="required-flag" id="req_1">*</span>
+      </label>
       <input class="form-control" ng-model="personalInfo.phone" placeholder="联系电话" required />
+       <label for="email" id="title_wechat">
+        您的微信：
+        <span class="required-flag" id="req_1">*</span>
+      </label>
       <input class="form-control" ng-model="personalInfo.wechat" placeholder="微信" required />
       <div class="text-right pre-next">
         <button type="submit" class="btn-md btn-available" ng-disabled="personalInfoForm.$invalid" ng-click="submitPersonalInfo(personalInfoForm.$valid)">下一步</button>
