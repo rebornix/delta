@@ -23,7 +23,7 @@
             <input class="form-control" type="text" ng-model="experience.title" placeholder="职位" required />
             <textarea class="form-control" rows="3" ng-model="experience.description" placeholder="详细描述" required></textarea>
           </div>
-          <div class="col-md-3 text-right">
+          <div class="col-md-3 text-right btns">
             <div class="icon-edit" ng-show="!isInEditing" ng-click="isInEditing = true"></div>
             <!--<button class="btn-sm btn-primary btn-profile" ng-show="!isInEditing" ng-click="isInEditing = true">M</button>-->
             <div class="icon-edit" ng-show="isInEditing" ng-click="isInEditing = false; saveExperience(experience)"></div>
@@ -57,7 +57,7 @@
             <input class="form-control" type="text" ng-model="education.degree" placeholder="学历" required>
             <textarea class="form-control" rows="3" ng-model="education.description" placeholder="详细描述" required></textarea>
           </div>
-          <div class="col-md-3 text-right">
+          <div class="col-md-3 text-right btns">
             <div class="icon-edit" ng-show="!isInEditing" ng-click="isInEditing = true"></div>
             <div class="icon-edit" ng-show="isInEditing" ng-click="isInEditing = false; saveEducation(education)"></div>
             <div class="icon-del" ng-click="removeEducation(education)"></div>

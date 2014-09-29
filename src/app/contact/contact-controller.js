@@ -10,10 +10,12 @@
 
         if (Auth._currentUser != null) {
             $scope.feedback.email = Auth._currentUser.email;
+            $scope.feedback.name = Auth._currentUser.applicant_name;
         }
 
         $scope.$on('login', function(e,d) {
             $scope.feedback.email = Auth._currentUser.email;
+            $scope.feedback.name = Auth._currentUser.applicant_name;
         });
 
         $scope.contact = function() {
