@@ -3,7 +3,7 @@
   var app = angular.module("deltastartup");
 
   app.controller('applyController', function (
-      $scope, $rootScope, Auth, $http, $state, $window, linkedinService) {
+      $scope, $rootScope, Auth, $http, $state, $window, linkedinService, $modal) {
 
     $scope.personalInfo = {};
     $scope.project = {};
@@ -128,10 +128,25 @@
       */
     };
 
-    $scope.removeExperience = function (experience) {
-      if ($window.confirm("确认删除？") === true) {
+    function removeExp(experience) {
         $scope.experiences.splice($scope.experiences.indexOf(experience), 1);
-      }
+    }
+
+    $scope.removeExperience = function (experience) {
+      $modal.open({
+        templateUrl: 'app/apply/partials/delete-entry.html',
+        controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+
+          $scope.ok = function () {
+            removeExp(experience);
+            $modalInstance.close();
+          };
+
+          $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+          };
+        }]
+      });
     };
 
     $scope.addEducation = function () {
@@ -147,10 +162,25 @@
       */
     };
 
-    $scope.removeEducation = function (education) {
-      if ($window.confirm("确认删除？") === true) {
+    function removeEdu(education) {
         $scope.educations.splice($scope.educations.indexOf(education), 1);
-      }
+    }
+
+    $scope.removeEducation = function (education) {
+      $modal.open({
+        templateUrl: 'app/apply/partials/delete-entry.html',
+        controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+
+          $scope.ok = function () {
+            removeEdu(education);
+            $modalInstance.close();
+          };
+
+          $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+          };
+        }]
+      });
     };
 
     $scope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
