@@ -85,6 +85,10 @@
                     templateUrl: "app/apply/partials/experience.html"
                 })
                 .state('apply.four', {
+                    url: '/choose-ticket',
+                    templateUrl: 'app/apply/partials/choose-ticket.html'
+                })
+                .state('apply.five', {
                     url: "/finish/",
                     templateUrl: "app/apply/partials/examination.html"
                 })

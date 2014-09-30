@@ -8,6 +8,7 @@
     $scope.personalInfo = {};
     $scope.project = {};
     $scope.experiences = [];
+    $scope.ticket = 'basic';
     $scope.educations = [];
 
     $scope.$state = $state;
@@ -43,7 +44,7 @@
     var states = [
       // tentative
       "apply.one", "apply.two",
-      "apply.three", "apply.four"
+      "apply.three", "apply.four", "apply.five"
     ];
 
     $scope.submitPersonalInfo = function () {
@@ -109,6 +110,17 @@
         $http.post(url, post_data).success(sucss_func).error(error_func);
       if(put_data.length > 0)
         $http.put(url+ "/update_all", put_data).success(sucss_func).error(error_func);
+    };
+
+    $scope.submitTicketInfo = function () {
+      sucss_func = function (data, status, headers, config) {
+          $state.go(states[4]);
+      }
+      error_func = function (data, status, headers, config) {
+          $.notify("Fail to submit your ticket info. Please try again.", "error");
+      }
+
+      $state.go(states[4]);
     };
 
     $scope.backToLastState = function (currentState) {

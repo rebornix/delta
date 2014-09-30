@@ -1,0 +1,20 @@
+<div class="container-fluid ticket-info">
+  <div class="row-fluid">
+    <form name="ticketInfoForm" novalidate>
+      <div>
+        <label for="email" id="title_name">
+          Choose Ticket：
+          <span class="required-flag" id="req_1">*</span>
+        </label>
+      </div>
+      <div>
+        <input type="radio" ng-model="ticket" value="student"> 学生票
+        <input type="radio" ng-model="ticket" value="basic"> 普通票
+      </div>
+      <div class="text-right pre-next">
+        <button class="btn-md btn-available" ng-click="backToLastState($state.current.name)">上一步</button>
+        <button type="submit" class="btn-md btn-available" ng-click="submitTicketInfo(ticketInfoForm.$valid)">下一步</button>
+      </div>
+    </form>
+  </div>
+</div>

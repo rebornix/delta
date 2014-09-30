@@ -18,9 +18,25 @@
             <p class="muted description">{{ experience.description }}</p>
           </div>
           <div class="edit-region col-md-9" ng-show="isInEditing">
+            <label>
+              公司：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <input class="form-control" type="text" ng-model="experience.company_name" placeholder="公司" required />
+            <label>
+              时间：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <input class="form-control" type="text" ng-model="experience.duration" placeholder="时间，e.g 2010.04 - 2013.04" required />
+            <label>
+              职位：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <input class="form-control" type="text" ng-model="experience.title" placeholder="职位" required />
+            <label>
+              详细描述：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <textarea class="form-control" rows="3" ng-model="experience.description" placeholder="详细描述" required></textarea>
           </div>
           <div class="col-md-3 text-right btns">
@@ -28,7 +44,7 @@
             <!--<button class="btn-sm btn-primary btn-profile" ng-show="!isInEditing" ng-click="isInEditing = true">M</button>-->
             <div class="icon-edit" ng-show="isInEditing" ng-click="isInEditing = false; saveExperience(experience)"></div>
             <!--<button class="btn-sm btn-primary btn-profile" ng-click="removeExperience(experience)">D</button>-->
-            <div class="icon-del" ng-click="removeExperience(experience)"></div>
+            <div class="icon-del" ng-show="!isInEditing" ng-click="removeExperience(experience)"></div>
           </div>
         </div>
       </div>
@@ -52,9 +68,25 @@
             <p class="muted description">{{ education.description }}</p>
           </div>
           <div class="edit-region col-md-9" ng-show="isInEditing">
+            <label>
+              学校：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <input class="form-control" type="text" ng-model="education.school" placeholder="学校" required>
+            <label>
+              时间：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <input class="form-control" type="text" ng-model="education.duration" placeholder="时间，e.g 2008.09 - 2012.06" required>
+            <label>
+              学历：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <input class="form-control" type="text" ng-model="education.degree" placeholder="学历" required>
+            <label>
+              详细描述：
+              <span class="required-flag" id="req_1">*</span>
+            </label>
             <textarea class="form-control" rows="3" ng-model="education.description" placeholder="详细描述" required></textarea>
           </div>
           <div class="col-md-3 text-right btns">
