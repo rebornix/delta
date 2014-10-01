@@ -50,7 +50,6 @@
     $scope.submitPersonalInfo = function () {
       $http.put(userApplicationApi, $scope.personalInfo)
         .success(function (data, status, headers, config) {
-          $.notify("Success to submit your personal information.", "success");
           $state.go(states[1]);
         })
         .error(function (data, status, headers, config) {
@@ -61,7 +60,6 @@
 
     $scope.submitProject = function () {
       success_func = function (data, status, headers, config) {
-        $.notify("Success to submit your project.", "success");
         $state.go(states[2]);
       }
       error_func = function (data, status, headers, config) {
@@ -77,10 +75,18 @@
     };
 
     $scope.submitExperience = function () {
-      if ($scope.educations.length <= 0 || $scope.experiences.length <= 0) {
-        $window.alert("Make sure you fill both the experience and education.");
-        return;
+      if ($scope.educations.length <= 0 && $scope.experiences.length <= 0) {
+          $modal.open({
+          templateUrl: 'app/apply/partials/submit-warning.html',
+          controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+
+            $scope.ok = function () {
+              $modalInstance.close();
+            };
+          }]
+        });
       }
+
       sucss_func = function (data, status, headers, config) {
           $state.go(states[3]);
       }

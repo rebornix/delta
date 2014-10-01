@@ -1,6 +1,9 @@
 <div class="container-fluid current-status">
   <div class="row-fluid">
     <form name="currentStatusForm">
+      <div style="margin-bottom: 20px">
+        <h4><strong>您现在的职业状况</strong></h4>
+      </div>
       <div>
         <p><input id="startuping" type="radio" name="status" value="1" ng-model="project.current_status"><label for="startuping" class="muted">已经离职，正在创业</label></p>
       </div>
@@ -8,15 +11,14 @@
         <p><input id="tostartup" type="radio" name="status" value="2" ng-model="project.current_status"><label for="tostartup" class="muted">还没有离职，正在兼职创业</label></p>
       </div>
       <div>
-        <p><input id="startup-thought" type="radio" name="status" value="3" ng-model="project.current_status"><label for="startup-thought" class="muted">还没有离职，有创业想法</label></p>
+        <p><input id="startup-thought" type="radio" name="status" value="3" ng-model="project.current_status"><label for="startup-thought" class="muted">还没有离职，但已经有创意</label></p>
       </div>
       <div style="margin-bottom: 60px;">
-        <p><input id="other-situation" type="radio" name="status" value="4" ng-model="project.current_status"><label for="other-situation" class="muted">其他情况请在此说明</label></p>
+        <p><input id="other-situation" type="radio" name="status" value="4" ng-model="project.current_status"><label for="other-situation" class="muted">其他 （ 请在此说明情况，以方便我们更加具体的了解您 ）</label></p>
         <textarea class="form-control status-comment" ng-model="project.status_description" ng-hide="project.current_status != 4"></textarea>
       </div>
-
       <div>
-        <p>如果你正在全职或者兼职创业，请简单介绍下你的产品情况，以帮助我们更好地了解你。</p>
+        <p>如果您正在全职或者兼职创业，请简单介绍下您的产品以及团队情况，以帮助我们更好地了解您。</p>
         <textarea class="form-control" rows="6" ng-model="project.idea_description"></textarea>
       </div>
     </form>
