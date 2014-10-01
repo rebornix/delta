@@ -9,38 +9,47 @@
     <link rel="stylesheet" href="css/delta.css" />
     <link rel="stylesheet" href="css/vendor.css" />
     <link href="css/sprites.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endbuild -->
 </head>
 <body>
   <div ng-controller="appController">
-
-    <div class="header">
-      <div>
-      <ul class="navigator pull-left">
-        <li ng-class="{active: $state.includes('index')}">
-          <a class="delta-active" href="/">关于我们</a>
-        </li>
-        <li ng-class="{active: $state.includes('course')}">
-          <a href="#/course">课程公告</a>
-        </li>
-        <li ng-class="{active: $state.includes('apply')}">
-          <a href="#/apply">课程报名</a>
-        </li>
-        <li ng-class="{active: $state.includes('contact')}">
-          <a href="#/contact">联系我们</a>
-        </li>
-        <li ng-class="{active: $state.includes('kudo')}">
-          <a href="#/kudo">用户好评</a>
-        </li>
-
-      </ul>
-
-      <div class="pull-right" ng-include="sessionBtn"></div>
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation" style="background: transparent; border: 0px;">
+      <div class="container-fluid header" >
+        <div class="navbar-header" style="margin-top: 30px">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse"  style="margin-top: 30px; margin-left: 12px;">
+          <ul class="nav navbar-nav navigator">
+            <li ng-class="{home-active: $state.includes('index')}">
+              <a href="/">关于我们</a>
+            </li>
+            <li ng-class="{home-active: $state.includes('course')}">
+              <a href="#/course">课程公告</a>
+            </li>
+            <li ng-class="{home-active: $state.includes('apply')}">
+              <a href="#/apply">课程报名</a>
+            </li>
+            <li ng-class="{home-active: $state.includes('contact')}">
+              <a href="#/contact">联系我们</a>
+            </li>
+            <li ng-class="{home-active: $state.includes('kudo')}">
+              <a href="#/kudo">用户好评</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"  style="margin-right: 32px;">
+            <li><div ng-include="sessionBtn"></div></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    </div>
-
-    <div ui-view></div>
+    <div ui-view style="position:absolute;top:0px;width:100%;"></div>
 
     <footer class="text-center">
       Copyright © 2014 Delta Startup Training Camp All Rights Reserved. Powered by
