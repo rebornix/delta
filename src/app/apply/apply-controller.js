@@ -47,6 +47,7 @@
       "apply.three", "apply.four", "apply.five"
     ];
 
+    // Personal Info
     $scope.submitPersonalInfo = function () {
       $http.put(userApplicationApi, $scope.personalInfo)
         .success(function (data, status, headers, config) {
@@ -58,6 +59,7 @@
 
     };
 
+    // Project
     $scope.submitProject = function () {
       success_func = function (data, status, headers, config) {
         $state.go(states[2]);
@@ -72,6 +74,13 @@
       }else{
         $http.put(url, $scope.project).success(success_func).error(error_func);
       }
+    };
+
+    // Experience
+    $scope.startDate = new Date();
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
     };
 
     $scope.submitExperience = function () {
@@ -118,21 +127,6 @@
         $http.put(url+ "/update_all", put_data).success(sucss_func).error(error_func);
     };
 
-    $scope.submitTicketInfo = function () {
-      sucss_func = function (data, status, headers, config) {
-          $state.go(states[4]);
-      }
-      error_func = function (data, status, headers, config) {
-          $.notify("Fail to submit your ticket info. Please try again.", "error");
-      }
-
-      $state.go(states[4]);
-    };
-
-    $scope.backToLastState = function (currentState) {
-      $state.go(states[Math.max(0, states.indexOf(currentState) - 1)]);
-    };
-
     $scope.addExperience = function (experience) {
       $scope.experiences.push({});
     };
@@ -167,6 +161,23 @@
       });
     };
 
+    // Ticket info
+    $scope.submitTicketInfo = function () {
+      sucss_func = function (data, status, headers, config) {
+          $state.go(states[4]);
+      }
+      error_func = function (data, status, headers, config) {
+          $.notify("Fail to submit your ticket info. Please try again.", "error");
+      }
+
+      $state.go(states[4]);
+    };
+
+    $scope.backToLastState = function (currentState) {
+      $state.go(states[Math.max(0, states.indexOf(currentState) - 1)]);
+    };
+
+    // Education
     $scope.addEducation = function () {
       $scope.educations.push({});
     };

@@ -12,7 +12,7 @@
           <div class="col-md-9" ng-show="!isInEditing">
             <p class="where-and-when">
               <span class="where">{{ experience.company_name }}</span>
-              <span class="duration">{{ experience.duration }}</span>
+              <span class="duration">{{ experience.startDate }} - {{ experience.endDate }}</span>
             </p>
             <p class="title"><strong>{{ experience.title }}</strong></p>
             <p class="muted description">{{ experience.description }}</p>
@@ -23,11 +23,15 @@
               <span class="required-flag" id="req_1">*</span>
             </label>
             <input class="form-control" type="text" ng-model="experience.company_name" placeholder="公司" required />
-            <label>
-              时间：
-              <span class="required-flag" id="req_1">*</span>
-            </label>
-            <input class="form-control" type="text" ng-model="experience.duration" placeholder="时间，e.g 2010.04 - 2013.04" required />
+            <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
+              <label>从: </label>
+              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="experience.startDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
+            </div>
+            <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
+              <label>至: </label>
+              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="experience.endDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
+            </div>
+            <br>
             <label>
               职位：
               <span class="required-flag" id="req_1">*</span>
