@@ -28,6 +28,19 @@
         });
     }];
 
+    app.userTemplateProvider = function (viewName) {
+        return ['$http', '$state', 'Auth', function($http, $state, Auth) {
+            return Auth.currentUser().then(function(user) {
+                    window.location = '/';
+                }, function(error) {
+                    return $http.get(viewName).then(function (response) {
+                        return response.data;
+                    }
+                ); 
+            });
+        }];
+    };
+
     app.config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('index', {
@@ -97,14 +110,14 @@
             .state('sign_in', {
                 url: "/sign_in",
                 views: {
-                    '': { templateUrl: "app/user/sign_in.html" },
+                    '': { templateProvider: app.userTemplateProvider("app/user/sign_in.html") },
                     'jumbotron@sign_in': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
             .state('sign_up', {
                 url: "/sign_up",
                 views: {
-                    '': { templateUrl: "app/user/sign_up.html" },
+                    '': { templateProvider: app.userTemplateProvider("app/user/sign_up.html") },
                     'jumbotron@sign_up': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             })
