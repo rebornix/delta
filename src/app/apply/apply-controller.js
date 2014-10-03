@@ -88,7 +88,6 @@
           $modal.open({
           templateUrl: 'app/apply/partials/submit-warning.html',
           controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
-
             $scope.ok = function () {
               $modalInstance.close();
             };
@@ -162,15 +161,28 @@
     };
 
     // Ticket info
-    $scope.submitTicketInfo = function () {
-      sucss_func = function (data, status, headers, config) {
-          $state.go(states[4]);
-      }
-      error_func = function (data, status, headers, config) {
-          $.notify("Fail to submit your ticket info. Please try again.", "error");
-      }
+    $scope.submitTicketInfo = function (ticket) {
+        sucss_func = function (data, status, headers, config) {
+            $state.go(states[4]);
+        }
+        error_func = function (data, status, headers, config) {
+            $.notify("Fail to submit your ticket info. Please try again.", "error");
+        }
 
-      $state.go(states[4]);
+        $modal.open({
+            templateUrl: 'app/apply/partials/confirm-modal.html',
+            controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    url = userApplicationApi + 'ticket'
+                    post_data = $scope.ticket
+                    $http.put(url, post_data).success(sucss_func).error(error_func);
+                    $modalInstance.close();
+                };
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }]
+        });
     };
 
     $scope.backToLastState = function (currentState) {

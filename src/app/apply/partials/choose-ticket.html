@@ -13,9 +13,10 @@
       <div>
         <p><input id="basic" type="radio" ng-model="ticket" value="basic"><label for="basic" class="muted"> 980 RMB （ 普通票 ）</label></p>
       </div>
-   <div class="text-right pre-next">
+      <div class="text-right pre-next">
         <button class="btn-md btn-available" ng-click="backToLastState($state.current.name)">上一步</button>
-        <button type="submit" class="btn-md btn-available" ng-click="submitTicketInfo(ticketInfoForm.$valid)">完成</button>
+        <button type="submit" class="btn-md btn-available" ng-click="submitTicketInfo(ticketInfoForm.$valid)">确定</button>
       </div>
+    </form>
   </div>
 </div>
