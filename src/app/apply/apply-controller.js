@@ -8,7 +8,7 @@
     $scope.personalInfo = {};
     $scope.project = {};
     $scope.experiences = [];
-    $scope.ticket = 'basic';
+    $scope.ticket = "basic";
     $scope.educations = [];
 
     $scope.$state = $state;
@@ -171,11 +171,10 @@
 
         $modal.open({
             templateUrl: 'app/apply/partials/confirm-modal.html',
-            controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+            controller: ['$scope', '$modalInstance',  function ($scope, $modalInstance) {
                 $scope.ok = function () {
                     url = userApplicationApi + 'ticket'
-                    post_data = $scope.ticket
-                    $http.put(url, post_data).success(sucss_func).error(error_func);
+                    $http.put(url, {ticket: ticket}).success(sucss_func).error(error_func);
                     $modalInstance.close();
                 };
                 $scope.cancel = function () {
