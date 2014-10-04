@@ -29,8 +29,12 @@
             $scope.personalInfo.applicant_name = currentUser.applicant_name;
             $scope.personalInfo.wechat = currentUser.wechat;
             $scope.personalInfo.phone = currentUser.phone;
-
-            $state.go(states[0]);
+            $scope.ticket = currentUser.ticket;
+            if(currentUser.ticket){
+                $state.go(states[4])
+            } else{
+                $state.go(states[0]);
+            }
           }
         })
         .error(function (data, status, headers, config) {
