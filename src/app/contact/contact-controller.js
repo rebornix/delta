@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('deltastartup');
 
-    app.controller('contactController', function($scope, $rootScope, Auth, $http, $state) {
+    app.controller('contactController', function($scope, $rootScope, Auth, $http, $state, $modal) {
         $scope.feedback = {
             email: '',
             name: '',
@@ -22,8 +22,14 @@
             var userApplicationApi = $rootScope.uri + "/contact";
             $http.post(userApplicationApi, $scope.feedback)
             .success(function (data, status, headers, config) {
-              $.notify("我们已经收到你的反馈.", "success");
-              $state.go('index');
+                $modal.open({
+                    templateUrl: 'app/contact/success_modal.html',
+                    controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+                        $scope.ok = function () {
+                            $modalInstance.close();
+                        };
+                    }]
+                })
             })
             .error(function (data, status, headers, config) {
               $.notify("Fail to submit your feedback. Please try again.", "error");
