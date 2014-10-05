@@ -1,19 +1,26 @@
 <div class="header-home">
   <div class="jumbotron" ng-style="{'background-size': 'cover', 'background-image':'url(/images/bg.jpg)'}">
-    <div class="container intro">
-      <div >
-        <div class="text-center icon-delta pull-left">
+    <div class="content container-fluid text-center">
+      <row>
+        <div class="icon-delta-xs visible-xs col-xs-12 text-center">
           <img ng-src="/images/small_logo.png", width="46">
         </div>
-        <p style="font-size: 24px;"><strong>Delta Startup Tranning Camp</strong></p>
-      </div>
-      <p class="slogn" style="font-size: 54px">创业，请别想干就干！</p>
-      <p class="text-right" style="font-size: 14px">2014年10月17日 - 2014年10月19日 上海, 创智天地</p>
+        <div class="col-xs-12 sub-title">
+          <img class="hidden-xs" ng-src="/images/small_logo.png", width="46">
+          <strong>Delta Startup Tranning Camp</strong>
+        </div>
+      </row>
+      <p class="hidden-xs slogn col-sm-12">创业，请别想干就干！</p>
+      <p class="slogn visible-xs" style='font-size: 30px'>创业，请别想干就干！</p>
+      <p class="info text-center" >2014年10月17日 - 2014年10月19日 上海, 创智天地</p>
       <div class="camp-intro text-center">
         <button class="btn-lg btn-primary btn-delta" ui-sref="course">本期训练营介绍</button>
       </div>
     </div>
-    <div class="pull-right" style="position: absolute; right: 30px; top: 440px;">
+    <div class="hidden-xs guru-logo pull-right">
+      <a href="//www.gurudigger.com"><img ng-src="/images/powerby.png" width="118"></a>
+    </div>
+    <div class="visible-xs guru-logo-xs text-center">
       <a href="//www.gurudigger.com"><img ng-src="/images/powerby.png" width="118"></a>
     </div>
   </div>
