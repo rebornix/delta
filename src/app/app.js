@@ -36,7 +36,7 @@
                     return $http.get(viewName).then(function (response) {
                         return response.data;
                     }
-                ); 
+                );
             });
         }];
     };
@@ -106,7 +106,6 @@
                     templateUrl: "app/apply/partials/examination.html"
                 })
 
-            //
             .state('sign_in', {
                 url: "/sign_in",
                 views: {
@@ -128,9 +127,7 @@
                     'jumbotron@404': { templateUrl: "app/shared/jumbotron-other.html" }
                 }
             });
-
-        $urlRouterProvider
-            .when('/apply', '/apply/personal-info/');
+        $urlRouterProvider.when('/apply', '/apply/personal-info/');
 
         $urlRouterProvider.otherwise("/404");
     });
@@ -168,9 +165,9 @@
         $scope.login = function () {
             Auth.login($scope.credentials).then(function(user) {
                 $state.go('apply.one');
-                $.notify('login succeed', 'success');
+                //$.notify('login succeed', 'success');
             }, function(error) {
-                $.notify(error, 'warn');
+                //$.notify(error, 'warn');
                 console.log(error);
             });
         };

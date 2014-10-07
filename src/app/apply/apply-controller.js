@@ -45,7 +45,7 @@
           }
         })
         .error(function (data, status, headers, config) {
-          $.notify("Fail to fetch user information", "error");
+            //$.notify("Fail to fetch user information", "error");
         });
 
     }, function(error) {
@@ -59,7 +59,7 @@
           $state.go(states[1]);
         })
         .error(function (data, status, headers, config) {
-          $.notify("Fail to submit your personal information. Please try again.", "error");
+            //$.notify("Fail to submit your personal information. Please try again.", "error");
         });
 
     };
@@ -70,7 +70,7 @@
         $state.go(states[2]);
       }
       error_func = function (data, status, headers, config) {
-        $.notify("Fail to submit your project infomation. Please try again.", "error");
+        //$.notify("Fail to submit your project infomation. Please try again.", "error");
         $state.go(states[1]);
       }
       url = userApplicationApi + "project/"
@@ -104,7 +104,7 @@
           $state.go(states[3]);
       }
       error_func = function (data, status, headers, config) {
-          $.notify("Fail to submit your experiences. Please try again.", "error");
+          //$.notify("Fail to submit your experiences. Please try again.", "error");
       }
       url = userApplicationApi + "expers";
       var post_data = []; var put_data = [];
@@ -171,7 +171,7 @@
             $state.go(states[4]);
         }
         error_func = function (data, status, headers, config) {
-            $.notify("Fail to submit your ticket info. Please try again.", "error");
+            //$.notify("Fail to submit your ticket info. Please try again.", "error");
         }
 
         $modal.open({
@@ -246,7 +246,7 @@
               }
             })
             .error(function (data, status, headers, config) {
-              $.notify("Fail to fetch your projects, Please try again.", "error");
+                //$.notify("Fail to fetch your projects, Please try again.", "error");
             });
           break;
         case states[2]:
@@ -258,7 +258,7 @@
               }
             })
             .error(function (data, status, headers, config) {
-              $.notify("Fail to fetch experiences, Please try again.", "error");
+              //$.notify("Fail to fetch experiences, Please try again.", "error");
             });
           break;
         default:
