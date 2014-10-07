@@ -40,6 +40,7 @@
             if(currentUser.ticket){
                 $state.go(states[4])
             } else{
+                $scope.ticket = "basic";
                 $state.go(states[0]);
             }
           }
