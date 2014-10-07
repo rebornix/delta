@@ -33,10 +33,12 @@
               $state.go("apply.finished");
           }
           else {
-            $scope.personalInfo.applicant_name = currentUser.applicant_name;
-            $scope.personalInfo.wechat = currentUser.wechat;
-            $scope.personalInfo.phone = currentUser.phone;
-            $scope.ticket = currentUser.ticket;
+            if ($scope.personalInfo.applicant_name == null){
+              $scope.personalInfo.applicant_name = currentUser.applicant_name;
+              $scope.personalInfo.wechat = currentUser.wechat;
+              $scope.personalInfo.phone = currentUser.phone;
+              $scope.ticket = currentUser.ticket;
+            }
             if(currentUser.ticket){
                 $state.go(states[4])
             } else{
