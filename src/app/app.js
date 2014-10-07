@@ -167,7 +167,7 @@
                 $state.go('apply.one');
                 //$.notify('login succeed', 'success');
             }, function(error) {
-                //$.notify(error, 'warn');
+                $.notify("登录失败: 用户名和密码不匹配", 'warn');
                 console.log(error);
             });
         };
@@ -184,8 +184,11 @@
             Auth.register($scope.credentials).then(function(registeredUser) {
                 Auth.login($scope.credentials).then(function() {
                     $state.go('apply.one');
+                }, function(error){
+                    $.notify("注册失败: ，该账户已经存在", 'warn');
                 });
             }, function(error) {
+                $.notify("注册失败", 'warn');
                 // Registration failed...
             });
 
