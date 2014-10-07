@@ -20,20 +20,22 @@
 
         $scope.contact = function() {
             var userApplicationApi = $rootScope.uri + "/contact";
+            var feedback = $scope.feedback
             $http.post(userApplicationApi, $scope.feedback)
-            .success(function (data, status, headers, config) {
-                $modal.open({
-                    templateUrl: 'app/contact/success_modal.html',
-                    controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
-                        $scope.ok = function () {
-                            $modalInstance.close();
-                        };
-                    }]
+                .success(function (data, status, headers, config) {
+                    $modal.open({
+                        templateUrl: 'app/contact/success_modal.html',
+                        controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+                            $scope.ok = function () {
+                                $modalInstance.close();
+                                feedback.description = "";
+                            };
+                        }]
+                    })
                 })
-            })
-            .error(function (data, status, headers, config) {
-              $.notify("Fail to submit your feedback. Please try again.", "error");
-            });
+                .error(function (data, status, headers, config) {
+                    $.notify("Fail to submit your feedback. Please try again.", "error");
+                });
         };
     });
 }());
