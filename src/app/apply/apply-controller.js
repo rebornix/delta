@@ -15,6 +15,13 @@
 
     var userApplicationApi;
 
+    var states = [
+      // tentative
+      "apply.one", "apply.two",
+      "apply.three", "apply.four", "apply.five"
+    ];
+
+
     Auth.currentUser().then(function(user) {
       var currentUser = Auth._currentUser;
 
@@ -23,7 +30,7 @@
       $http.get(userApplicationApi)
         .success(function (data, status, headers, config) {
           if (data.status === -1) {
-            $state.go("apply.finished");
+              $state.go("apply.finished");
           }
           else {
             $scope.personalInfo.applicant_name = currentUser.applicant_name;
@@ -44,12 +51,6 @@
     }, function(error) {
         $state.go('sign_in');
     });
-
-    var states = [
-      // tentative
-      "apply.one", "apply.two",
-      "apply.three", "apply.four", "apply.five"
-    ];
 
     // Personal Info
     $scope.submitPersonalInfo = function () {
