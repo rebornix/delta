@@ -23,7 +23,7 @@
               return response.data;
           });
         }, function(error) {
-            $.notify("请先注册登录");
+            //$.notify("请先注册登录");
             $state.go('sign_up');
         });
     }];
