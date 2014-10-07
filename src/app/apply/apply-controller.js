@@ -136,6 +136,10 @@
     };
 
     $scope.saveExperience = function (experience) {
+        if ( experience.company_name && experience.description &&
+             experience.title  && experience.startDate && experience.endDate)
+            return true;
+        return false;
       // fake
       /*
       $http.post().success(function () {

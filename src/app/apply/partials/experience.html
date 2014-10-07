@@ -2,13 +2,15 @@
   <form name="experienceForm" class="row-fluid" novalidate>
     <div id="profession">
       <div class="container-fluid experience-header">
-        <h5 class="pull-left"><strong>职业经历</strong></h5>
+        <p class="pull-left"  style="font-size: 16px"><strong>职业经历</strong></p>
         <div class="action pull-right">
-          <button class="btn-sm btn-profile btn-delta-style btn-add-exp" ng-click="addExperience()">添加</button>
+          <a href="" ng-click="addExperience()">
+            <img src="images/add_button.png"/>
+          </a>
         </div>
       </div>
-      <div>
-        <div class="exp-entry container-fluid" ng-repeat="experience in experiences" ng-init="!experience.company_name && (isInEditing = true)">
+      <div class="container-fluid">
+        <div class="exp-entry row" ng-repeat="experience in experiences" ng-init="!experience.company_name && (isInEditing = true)">
           <div class="col-md-9" ng-show="!isInEditing">
             <p class="where-and-when">
               <span class="where">{{ experience.company_name }}</span>
@@ -17,7 +19,7 @@
             <p class="title"><strong>{{ experience.title }}</strong></p>
             <p class="muted description">{{ experience.description }}</p>
           </div>
-          <div class="edit-region col-md-9" ng-show="isInEditing">
+          <div class="edit-region col-md-12" ng-show="isInEditing">
             <label>
               公司：
               <span class="required-flag" id="req_1">*</span>
@@ -46,11 +48,14 @@
               <span class="required-flag" id="req_1">*</span>
             </label>
             <textarea class="form-control" rows="3" ng-model="experience.description" placeholder="详细描述" required></textarea>
+            <br />
+            <div class="pull-right" ng-click="saveExperience(experience) && (isInEditing = false)">
+              <button class="btn-sm btn-available btn-profile">保存</button>
+            </div>
           </div>
           <div class="col-md-3 text-right btns">
             <div class="icon-edit" ng-show="!isInEditing" ng-click="isInEditing = true"></div>
             <!--<button class="btn-sm btn-primary btn-profile" ng-show="!isInEditing" ng-click="isInEditing = true">M</button>-->
-            <div class="icon-edit" ng-show="isInEditing" ng-click="isInEditing = false; saveExperience(experience)"></div>
             <!--<button class="btn-sm btn-primary btn-profile" ng-click="removeExperience(experience)">D</button>-->
             <div class="icon-del" ng-show="!isInEditing" ng-click="removeExperience(experience)"></div>
           </div>
@@ -60,9 +65,12 @@
 
     <div id="education">
       <div class="container-fluid experience-header">
-        <h5 class="pull-left"><strong>教育</strong></h5>
+        <p class="pull-left" style="font-size: 16px"><strong>教育</strong></p>
         <div class="action pull-right">
-          <button class="btn-sm btn-profile btn-delta-style btn-add-exp" ng-click="addEducation()">添加</button>
+          <a href="" ng-click="addExperience()">
+            <img src="images/add_button.png"/>
+          </a>
+
         </div>
       </div>
       <div>
