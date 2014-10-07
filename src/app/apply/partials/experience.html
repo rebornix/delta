@@ -11,7 +11,7 @@
       </div>
       <div class="container-fluid">
         <div class="exp-entry row" ng-repeat="experience in experiences" ng-init="!experience.company_name && (isInEditing = true)">
-          <div class="col-md-9" ng-show="!isInEditing">
+          <div class="col-xs-9" ng-show="!isInEditing">
             <p class="where-and-when">
               <span class="where">{{ experience.company_name }}</span>
               <span class="duration">{{ experience.startDate | date:'yyyy-MM-dd' }} - {{ experience.endDate | date:'yyyy-MM-dd' }}</span>
@@ -19,7 +19,7 @@
             <p class="title"><strong>{{ experience.title }}</strong></p>
             <p class="muted description">{{ experience.description }}</p>
           </div>
-          <div class="edit-region col-md-12" ng-show="isInEditing">
+          <div class="edit-region col-xs-12" ng-show="isInEditing">
             <label>
               公司：
               <span class="required-flag" id="req_1">*</span>
@@ -67,15 +67,15 @@
       <div class="container-fluid experience-header">
         <p class="pull-left" style="font-size: 16px"><strong>教育</strong></p>
         <div class="action pull-right">
-          <a href="" ng-click="addExperience()">
+          <a href="" ng-click="addEducation()">
             <img src="images/add_button.png"/>
           </a>
 
         </div>
       </div>
-      <div>
-        <div class="exp-entry container-fluid" ng-repeat="education in educations" ng-init="!education.school && (isInEditing = true)">
-          <div class="col-md-9" ng-show="!isInEditing">
+      <div class="container-fluid">
+        <div class="exp-entry row" ng-repeat="education in educations" ng-init="!education.school && (isInEditing = true)">
+          <div class="col-xs-9" ng-show="!isInEditing">
             <p class="where-and-when">
               <span class="where">{{ education.school }}</span>
               <span class="duration">{{ education.startDate | date:'yyyy-MM-dd'}} - {{ education.endDate | date:'yyyy-MM-dd'}}</span>
@@ -83,7 +83,7 @@
             <p class="title"><strong>{{ education.degree }}</strong></p>
             <p class="muted description">{{ education.description }}</p>
           </div>
-          <div class="edit-region col-md-9" ng-show="isInEditing">
+          <div class="edit-region col-xs-12" ng-show="isInEditing">
             <label>
               学校：
               <span class="required-flag" id="req_1">*</span>
@@ -108,11 +108,14 @@
               <span class="required-flag" id="req_1">*</span>
             </label>
             <textarea class="form-control" rows="3" ng-model="education.description" placeholder="详细描述" required></textarea>
+            <br />
+            <div class="pull-right" ng-click="saveEducation(education) && (isInEditing = false)">
+              <button class="btn-sm btn-available btn-profile">保存</button>
+            </div>
           </div>
           <div class="col-md-3 text-right btns">
             <div class="icon-edit" ng-show="!isInEditing" ng-click="isInEditing = true"></div>
-            <div class="icon-edit" ng-show="isInEditing" ng-click="isInEditing = false; saveEducation(education)"></div>
-            <div class="icon-del" ng-click="removeEducation(education)"></div>
+            <div class="icon-del"  ng-show="!isInEditing" ng-click="removeEducation(education)"></div>
           </div>
         </div>
       </div>

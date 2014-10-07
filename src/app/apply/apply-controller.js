@@ -140,12 +140,6 @@
              experience.title  && experience.startDate && experience.endDate)
             return true;
         return false;
-      // fake
-      /*
-      $http.post().success(function () {
-
-      });
-      */
     };
 
     function removeExp(experience) {
@@ -203,12 +197,10 @@
     };
 
     $scope.saveEducation = function (education) {
-      // fake
-      /*
-      $http.post().success(function () {
-
-      });
-      */
+        if ( education.school && education.description &&
+             education.degree  && education.startDate && education.endDate)
+            return true;
+        return false;
     };
 
     function removeEdu(education) {
