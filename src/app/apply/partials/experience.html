@@ -2,7 +2,7 @@
   <form name="experienceForm" class="row-fluid" novalidate>
     <div id="profession">
       <div class="container-fluid experience-header">
-        <p class="pull-left"  style="font-size: 16px"><strong>职业经历</strong></p>
+        <p class="pull-left"  style="font-size: 16px"><strong>工作经历</strong></p>
         <div class="action pull-right">
           <a href="" ng-click="addExperience()">
             <img src="images/add_button.png"/>
@@ -25,7 +25,7 @@
               公司：
               <span class="required-flag" id="req_1">*</span>
             </label>
-            <input class="form-control" type="text" ng-model="experience.company_name" placeholder="公司" required />
+            <input class="form-control" type="text" ng-model="experience.company_name" required />
             <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
               <label>从: </label>
               <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="experience.startDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
@@ -43,12 +43,12 @@
               职位：
               <span class="required-flag" id="req_1">*</span>
             </label>
-            <input class="form-control" type="text" ng-model="experience.title" placeholder="职位" required />
+            <input class="form-control" type="text" ng-model="experience.title" required />
             <label>
-              详细描述：
+              工作描述：
               <span class="required-flag" id="req_1">*</span>
             </label>
-            <textarea class="form-control" rows="3" ng-model="experience.description" placeholder="详细描述" required></textarea>
+            <textarea class="form-control" rows="3" ng-model="experience.description" required></textarea>
             <br />
             <div class="pull-right" ng-click="saveExperience(experience) && (isInEditing = false)">
               <button class="btn-sm btn-available btn-profile">保存</button>
@@ -66,7 +66,7 @@
 
     <div id="education">
       <div class="container-fluid experience-header">
-        <p class="pull-left" style="font-size: 16px"><strong>教育</strong></p>
+        <p class="pull-left" style="font-size: 16px"><strong>教育背景</strong></p>
         <div class="action pull-right">
           <a href="" ng-click="addEducation()">
             <img src="images/add_button.png"/>
@@ -89,7 +89,7 @@
               学校：
               <span class="required-flag" id="req_1">*</span>
             </label>
-            <input class="form-control" type="text" ng-model="education.school" placeholder="学校" required>
+            <input class="form-control" type="text" ng-model="education.school" required>
             <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
               <label>从: </label>
               <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="education.startDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
@@ -100,15 +100,15 @@
             </div>
             <br>
             <label>
-              学历：
+              主修以及学历：
               <span class="required-flag" id="req_1">*</span>
             </label>
-            <input class="form-control" type="text" ng-model="education.degree" placeholder="学历" required>
+            <input class="form-control" type="text" ng-model="education.degree" required>
             <label>
-              详细描述：
+              所获奖项：
               <span class="required-flag" id="req_1">*</span>
             </label>
-            <textarea class="form-control" rows="3" ng-model="education.description" placeholder="详细描述" required></textarea>
+            <textarea class="form-control" rows="3" ng-model="education.description" required></textarea>
             <br />
             <div class="pull-right" ng-click="saveEducation(education) && (isInEditing = false)">
               <button class="btn-sm btn-available btn-profile">保存</button>
