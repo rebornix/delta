@@ -85,11 +85,10 @@
     };
 
     // Experience
-    $scope.startDate = new Date();
-    $scope.dateOptions = {
-        formatYear: 'yy',
-        startingDay: 1
-    };
+
+    $scope.yearoptions = [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
+      2009, 2010, 2011, 2012, 2013, 2014];
+    $scope.monthoptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     $scope.submitExperience = function () {
       if ($scope.educations.length <= 0 && $scope.experiences.length <= 0) {
@@ -140,7 +139,7 @@
 
     $scope.saveExperience = function (experience) {
         if ( experience.company_name && experience.description &&
-             experience.title  && experience.startDate && experience.endDate)
+             experience.title && experience.startDate && experience.endDate)
             return true;
         return false;
     };

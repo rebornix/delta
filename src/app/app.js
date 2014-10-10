@@ -164,7 +164,7 @@
 
         $scope.login = function () {
             Auth.login($scope.credentials).then(function(user) {
-                $state.go('apply.one');
+                $state.go('apply.three');
                 //$.notify('login succeed', 'success');
             }, function(error) {
                 $.notify("登录失败: 用户名和密码不匹配", 'warn');

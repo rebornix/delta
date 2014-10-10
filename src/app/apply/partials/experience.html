@@ -15,7 +15,9 @@
             <p class="where-and-when">
               <span class="where">{{ experience.company_name }}</span>
               <br />
-              <span class="duration">{{ experience.startDate | date:'yyyy-MM-dd' }} - {{ experience.endDate | date:'yyyy-MM-dd' }}</span>
+              <span class="duration">{{ experience.startDate.year }}-{{experience.startDate.month}} </span>
+              <span class="duration" ng-show="experience.endDate.present">至今</span>
+              <span class="duration" ng-hide="experience.endDate.present">- {{ experience.endDate.year }}-{{experience.endDate.month}}</span>
             </p>
             <p class="title"><strong>{{ experience.title }}</strong></p>
             <p class="muted description">{{ experience.description }}</p>
@@ -27,14 +29,15 @@
             </label>
             <input class="form-control" type="text" ng-model="experience.company_name" required />
             <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
-              <label>从: </label>
-              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="experience.startDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
+              <label>从 </label>
+              <select class="select-control" ng-model="experience.startDate.year" ng-options="year for year in yearoptions" ng-required="true"></select>
+              <select class="select-control" ng-model="experience.startDate.month" ng-options="month for month in monthoptions" ng-required="true"></select>
+              <label>至 </label>
+              <select class="select-control" ng-model="experience.endDate.year" ng-options="year for year in yearoptions" ng-required="true" ng-hide="experience.endDate.present"></select>
+              <select class="select-control" ng-model="experience.endDate.month" ng-options="month for month in monthoptions" ng-required="true" ng-hide="experience.endDate.present"></select>
+              <input class="checkbox-control" type="checkbox" ng-model="experience.endDate.present"/>
+              <label>至今</label>
             </div>
-            <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
-              <label>至: </label>
-              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="experience.endDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
-            </div>
-            <br>
             <label>
               公司网站：
             </label>
@@ -91,12 +94,14 @@
             </label>
             <input class="form-control" type="text" ng-model="education.school" required>
             <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
-              <label>从: </label>
-              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="education.startDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
-            </div>
-            <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
-              <label>至: </label>
-              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="education.endDate" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" class="datetimepicker"/>
+              <label>从 </label>
+              <select class="select-control" ng-model="education.startDate.year" ng-options="year for year in yearoptions" ng-required="true"></select>
+              <select class="select-control" ng-model="education.startDate.month" ng-options="month for month in monthoptions" ng-required="true"></select>
+              <label>至 </label>
+              <select class="select-control" ng-model="education.endDate.year" ng-options="year for year in yearoptions" ng-required="true" ng-hide="education.endDate.present"></select>
+              <select class="select-control" ng-model="education.endDate.month" ng-options="month for month in monthoptions" ng-required="true" ng-hide="education.endDate.present"></select>
+              <input class="checkbox-control" type="checkbox" ng-model="education.endDate.present"/>
+              <label>至今</label>
             </div>
             <br>
             <label>
