@@ -31,13 +31,21 @@
             <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
               <label>从 </label>
               <select class="select-control" ng-model="experience.startDate.year" ng-options="year for year in yearoptions" ng-required="true"></select>
+              <label>年 </label>
               <select class="select-control" ng-model="experience.startDate.month" ng-options="month for month in monthoptions" ng-required="true"></select>
+              <label>月 </label>
+              <br />
               <label>至 </label>
               <select class="select-control" ng-model="experience.endDate.year" ng-options="year for year in yearoptions" ng-required="true" ng-hide="experience.endDate.present"></select>
-              <select class="select-control" ng-model="experience.endDate.month" ng-options="month for month in monthoptions" ng-required="true" ng-hide="experience.endDate.present"></select>
+              <label ng-hide="experience.endDate.present">年 </label>
+              <select class="select-control" ng-model="experience.endDate.month" ng-options="month for month in monthoptions" ng-required="true" ng-hide="experience.endDate.present">
+              </select>
+              <label ng-hide="experience.endDate.present">月 </label>
               <input class="checkbox-control" type="checkbox" ng-model="experience.endDate.present"/>
               <label>至今</label>
             </div>
+            <br />
+            <br />
             <label>
               公司网站：
             </label>
@@ -96,14 +104,20 @@
             <div style="display: block;width: 100%;height: 34px;margin-top: 12px;font-size: 14px;line-height: 1.42857143;">
               <label>从 </label>
               <select class="select-control" ng-model="education.startDate.year" ng-options="year for year in yearoptions" ng-required="true"></select>
+              <label>年 </label>
               <select class="select-control" ng-model="education.startDate.month" ng-options="month for month in monthoptions" ng-required="true"></select>
+              <label>月 </label>
+              <br />
               <label>至 </label>
               <select class="select-control" ng-model="education.endDate.year" ng-options="year for year in yearoptions" ng-required="true" ng-hide="education.endDate.present"></select>
+              <label  ng-hide="education.endDate.present">年 </label>
               <select class="select-control" ng-model="education.endDate.month" ng-options="month for month in monthoptions" ng-required="true" ng-hide="education.endDate.present"></select>
+              <label  ng-hide="education.endDate.present">月 </label>
               <input class="checkbox-control" type="checkbox" ng-model="education.endDate.present"/>
               <label>至今</label>
             </div>
-            <br>
+            <br />
+            <br />
             <label>
               主修以及学历：
               <span class="required-flag" id="req_1">*</span>
